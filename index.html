@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sukoon · your calm corner</title>
+<meta name="description" content="Sukoon is a gentle daily check-in: name your inner weather, grow a mood garden, breathe, keep a gratitude jar and write letters to your future self. Everything stays on your phone.">
+<meta name="author" content="Madhuri Patil">
+<meta name="theme-color" content="#2a2148">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sukoon">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sukoon · your calm corner">
+<meta property="og:description" content="Name your inner weather, grow a mood garden, breathe, and write to your future self. Private by design. Made with love by Madhuri Patil.">
+<meta property="og:url" content="https://madhurids012-jpg.github.io/sukoon/">
+<meta property="og:image" content="https://madhurids012-jpg.github.io/sukoon/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://madhurids012-jpg.github.io/sukoon/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a2148; --ink-2:#5b5279; --muted:#8a82a6;
+  --card:rgba(255,255,255,.72); --card-2:rgba(255,255,255,.55); --line:rgba(42,33,72,.10);
+  --peach:#ffb38a; --rose:#ff8fab; --lav:#b9a7ff; --mint:#8fe0c4; --sun:#ffd166; --sky:#8ecdf7;
+  --w1:#7a7f9e; --w2:#7fa6d9; --w3:#b8c2d6; --w4:#ffc857; --w5:#ff8fab;
+  --r:22px; --shadow:0 18px 50px -24px rgba(42,33,72,.45);
+  --sky-a:#ffd9c2; --sky-b:#f6c6e6; --sky-c:#c9c1ff;
+  --nav-h:74px;
+}
+[data-sky="day"]{--sky-a:#bfe6ff;--sky-b:#d9f0ff;--sky-c:#fff3d6}
+[data-sky="dusk"]{--sky-a:#ffb38a;--sky-b:#f58fb1;--sky-c:#8d78e0}
+[data-sky="night"]{--sky-a:#1d1840;--sky-b:#2c2468;--sky-c:#4a3a8c;--ink:#f3efff;--ink-2:#cfc7ef;--muted:#a59dcb;--card:rgba(40,32,84,.62);--card-2:rgba(40,32,84,.45);--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--sky-c);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .6s}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lav);outline-offset:2px;border-radius:10px}
+
+/* ---------- sky scene ---------- */
+.sky{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-a),var(--sky-b) 55%,var(--sky-c));transition:background 1.2s}
+.orb-sun{position:absolute;right:12%;top:9%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff6d8 0 35%,#ffd98a 60%,rgba(255,217,138,0) 72%);filter:blur(.3px);animation:float 9s ease-in-out infinite}
+[data-sky="night"] .orb-sun{background:radial-gradient(circle,#fffbe9 0 30%,#e8e2ff 52%,rgba(232,226,255,0) 70%);width:90px;height:90px}
+.cloud{position:absolute;height:38px;border-radius:40px;background:rgba(255,255,255,.7);filter:blur(1px);animation:drift linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud::before{width:46px;height:46px;left:18px;top:-22px}.cloud::after{width:60px;height:60px;left:48px;top:-30px}
+[data-sky="night"] .cloud{background:rgba(255,255,255,.08)}
+.stars{position:absolute;inset:0;opacity:0;transition:opacity 1.2s}
+[data-sky="night"] .stars{opacity:1}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:twinkle 3s ease-in-out infinite}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:28vh;min-height:160px}
+.weather{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.weather i{position:absolute;top:-20px;width:2px;height:16px;border-radius:2px;background:rgba(255,255,255,.65);animation:rain linear infinite}
+@keyframes float{50%{transform:translateY(10px)}}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+@keyframes twinkle{50%{opacity:.25}}
+@keyframes rain{to{transform:translateY(110vh)}}
+
+/* ---------- layout ---------- */
+.app{max-width:520px;margin:0 auto;min-height:100%;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(var(--nav-h) + env(safe-area-inset-bottom) + 28px)}
+header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;letter-spacing:.2px}
+.brand svg{width:34px;height:34px}
+.chip-date{font-size:.8rem;font-weight:700;color:var(--ink-2);background:var(--card-2);padding:6px 12px;border-radius:999px;backdrop-filter:blur(10px)}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(1.8rem,7vw,2.3rem);line-height:1.12;letter-spacing:-.3px}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:1.25rem;letter-spacing:-.1px}
+.sub{color:var(--ink-2);margin-top:6px;font-size:1rem}
+.card{background:var(--card);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.55);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-top:16px}
+[data-sky="night"] .card{border-color:rgba(255,255,255,.08)}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.k{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.view{animation:rise .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+
+/* ---------- weather picker ---------- */
+.weathers{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.wbtn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px 10px;border-radius:18px;background:var(--card-2);border:2px solid transparent;transition:transform .2s,border-color .2s,background .2s}
+.wbtn svg{width:44px;height:44px;transition:transform .3s}
+.wbtn span{font-size:.72rem;font-weight:800;color:var(--ink-2)}
+.wbtn:hover svg{transform:translateY(-3px) scale(1.06)}
+.wbtn[aria-pressed="true"]{border-color:var(--wc);background:color-mix(in srgb,var(--wc) 22%,transparent);transform:translateY(-2px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{padding:7px 12px;border-radius:999px;background:var(--card-2);font-size:.82rem;font-weight:700;color:var(--ink-2);border:1.5px solid transparent}
+.tag[aria-pressed="true"]{border-color:var(--lav);background:color-mix(in srgb,var(--lav) 28%,transparent);color:var(--ink)}
+textarea,input[type=text],input[type=date]{width:100%;border:1.5px solid var(--line);background:var(--card-2);border-radius:16px;padding:12px 14px;resize:none;outline:none}
+textarea:focus,input:focus{border-color:var(--lav)}
+textarea::placeholder,input::placeholder{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:800;background:var(--ink);color:#fff;transition:transform .15s,box-shadow .2s}
+[data-sky="night"] .btn{background:#f3efff;color:#2a2148}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(42,33,72,.6)}
+.btn:active{transform:scale(.98)}
+.btn.soft{background:var(--card-2);color:var(--ink)}
+.btn.wide{width:100%}
+.btn:disabled{opacity:.45;pointer-events:none}
+.row{display:flex;gap:10px;align-items:center}
+.mt{margin-top:14px}
+.today-done{display:flex;align-items:center;gap:14px}
+.today-done svg{width:64px;height:64px;flex:none}
+.small{font-size:.86rem;color:var(--ink-2)}
+.quote{font-family:Fraunces,serif;font-size:1.12rem;line-height:1.45}
+.quote small{display:block;font-family:Nunito;font-size:.78rem;color:var(--muted);margin-top:8px;font-weight:700}
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mini{background:var(--card-2);border-radius:18px;padding:12px;text-align:center}
+.mini b{display:block;font-family:Fraunces,serif;font-size:1.6rem}
+.mini span{font-size:.72rem;font-weight:800;color:var(--muted)}
+
+/* ---------- garden ---------- */
+.bed{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;align-items:end;height:150px;padding:0 4px;background:linear-gradient(180deg,transparent 70%,rgba(143,224,196,.35) 70%);border-radius:16px}
+.plot{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.plot svg{width:100%;max-width:56px;overflow:visible}
+.plot .d{font-size:.7rem;font-weight:800;color:var(--muted);margin-top:4px}
+.plot.today .d{color:var(--ink)}
+.grow{transform-origin:50% 100%;animation:grow 1s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes grow{from{transform:scaleY(0)}}
+.sway{transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(3deg)}}
+.heat{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.heat i{aspect-ratio:1;border-radius:8px;background:var(--card-2);position:relative}
+.heat i[data-today]{outline:2px solid var(--ink-2);outline-offset:1px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:.74rem;font-weight:700;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:3px}
+.chart{width:100%;height:150px;display:block}
+
+/* ---------- breathe ---------- */
+.patterns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.pbtn{padding:8px 14px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.84rem;color:var(--ink-2);border:1.5px solid transparent}
+.pbtn[aria-pressed="true"]{border-color:var(--mint);background:color-mix(in srgb,var(--mint) 30%,transparent);color:var(--ink)}
+.breath-stage{position:relative;height:300px;display:grid;place-items:center;margin:10px 0}
+.ring{position:absolute;width:250px;height:250px;border-radius:50%;border:2px dashed color-mix(in srgb,var(--ink) 18%,transparent)}
+.orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--mint) 45%,#6fc7d9 75%,#8d78e0);box-shadow:0 0 60px 10px color-mix(in srgb,var(--mint) 55%,transparent);transition:transform 4s cubic-bezier(.45,0,.55,1);will-change:transform}
+.breath-text{position:absolute;text-align:center;pointer-events:none}
+.breath-text b{display:block;font-family:Fraunces,serif;font-size:1.5rem;color:#2a2148}
+.breath-text span{font-weight:800;color:#2a2148;opacity:.7}
+
+/* ---------- jar ---------- */
+.jar-wrap{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}
+.jar{width:120px;height:146px}.jar-wrap>div{min-width:0}
+.memory{font-family:Fraunces,serif;font-size:1.05rem;line-height:1.45;padding:14px;border-radius:16px;background:color-mix(in srgb,var(--sun) 22%,transparent);margin-top:12px;animation:rise .4s}
+.memory small{display:block;font-family:Nunito;font-size:.74rem;color:var(--muted);font-weight:700;margin-top:6px}
+.letters{list-style:none;display:grid;gap:10px;margin-top:12px}
+.letter{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:var(--card-2)}
+.letter svg{width:34px;height:34px;flex:none}
+.letter .meta{flex:1;min-width:0}
+.letter .meta b{display:block;font-size:.92rem}
+.letter .meta span{font-size:.78rem;color:var(--muted);font-weight:700}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:7px 12px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.8rem;color:var(--ink-2);border:1.5px solid transparent}
+.seg button[aria-pressed="true"]{border-color:var(--peach);background:color-mix(in srgb,var(--peach) 28%,transparent);color:var(--ink)}
+
+/* ---------- me ---------- */
+.list{display:grid;gap:2px}
+.li{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line);width:100%;text-align:left}
+.li:last-child{border-bottom:0}
+.li .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--card-2);flex:none;font-size:1.05rem}
+.li .tx{flex:1}
+.li .tx b{display:block;font-size:.95rem}
+.li .tx span{font-size:.8rem;color:var(--muted);font-weight:600}
+.li .end{font-size:.85rem;font-weight:800;color:var(--ink-2)}
+.switch{width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;transition:background .2s;flex:none}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .2s}
+.switch[aria-checked="true"]{background:var(--mint)}
+.switch[aria-checked="true"]::after{transform:translateX(18px)}
+.support{background:linear-gradient(135deg,color-mix(in srgb,var(--rose) 30%,transparent),color-mix(in srgb,var(--lav) 30%,transparent))}
+.support a{font-weight:800}
+.credit{text-align:center;margin-top:26px;font-size:.86rem;color:var(--ink-2);font-weight:700}
+.credit a{text-decoration:none;border-bottom:1.5px dotted currentColor}
+.heart{display:inline-block;color:#ff5d8f;animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
+
+/* ---------- nav ---------- */
+nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);width:min(492px,calc(100% - 24px));height:var(--nav-h);display:grid;grid-template-columns:repeat(5,1fr);background:var(--card);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border:1px solid rgba(255,255,255,.55);border-radius:26px;box-shadow:0 20px 40px -18px rgba(42,33,72,.5);z-index:20;padding:6px}
+[data-sky="night"] nav.tabs{border-color:rgba(255,255,255,.08)}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--muted);transition:color .2s,background .2s}
+.tab svg{width:24px;height:24px}
+.tab[aria-selected="true"]{color:var(--ink);background:var(--card-2)}
+
+/* ---------- onboarding / modal / toast ---------- */
+.welcome{min-height:calc(100vh - 120px);display:flex;flex-direction:column;justify-content:center;text-align:center;gap:18px}
+.welcome .logo{width:96px;height:96px;margin:0 auto;animation:float 6s ease-in-out infinite}
+.welcome h1{font-size:clamp(2.2rem,9vw,2.9rem)}
+.welcome input{text-align:center;font-size:1.1rem;padding:15px}
+.modal-bg{position:fixed;inset:0;background:rgba(20,14,40,.45);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{background:var(--card);backdrop-filter:blur(24px);border-radius:24px;padding:22px;max-width:420px;width:100%;box-shadow:var(--shadow);animation:rise .3s}
+[data-sky="night"] .modal{background:rgba(40,32,84,.92)}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 26px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;font-size:.9rem;opacity:0;transition:opacity .3s,transform .3s;z-index:60;white-space:nowrap;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis}
+[data-sky="night"] .toast{background:#f3efff;color:#2a2148}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:55;overflow:hidden}
+.petals i{position:absolute;top:-20px;width:12px;height:12px;border-radius:12px 0;animation:fall 2.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (min-width:760px){.app{padding-top:36px}}
+@media (max-width:640px){.orb-sun{width:150px;height:150px;top:-48px;right:-40px;opacity:.85}[data-sky="night"] .orb-sun{width:120px;height:120px;top:-36px;right:-30px}.chip-date{position:relative;z-index:1}}
+.btn{white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="stars" id="stars"></div>
+  <div class="orb-sun"></div>
+  <div class="cloud" style="top:16%;width:110px;animation-duration:70s;animation-delay:-20s"></div>
+  <div class="cloud" style="top:30%;width:80px;animation-duration:95s;animation-delay:-60s;opacity:.7"></div>
+  <div class="cloud" style="top:8%;width:70px;animation-duration:120s;animation-delay:-5s;opacity:.6"></div>
+  <div class="weather" id="weatherFx"></div>
+  <svg class="hills" viewBox="0 0 1200 300" preserveAspectRatio="none">
+    <path d="M0 170 C 200 90 380 210 600 150 S 1000 80 1200 160 V300 H0Z" fill="rgba(255,255,255,.28)"/>
+    <path d="M0 220 C 240 160 420 260 700 210 S 1050 170 1200 220 V300 H0Z" fill="rgba(143,224,196,.35)"/>
+    <path d="M0 260 C 300 230 520 290 820 255 S 1100 240 1200 262 V300 H0Z" fill="rgba(111,199,170,.38)"/>
+  </svg>
+</div>
+
+<main class="app" id="app" aria-live="polite"></main>
+
+<nav class="tabs" id="tabs" role="tablist" aria-label="Sections" hidden></nav>
+<div class="toast" id="toast" role="status"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="modal-bg" id="modalBg" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+
+<script>
+/* =========================================================
+   Sukoon · your calm corner
+   Made with love by Madhuri Patil · all data stays in localStorage
+   ========================================================= */
+const KEY = "sukoon.v1";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const dkey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const fmtDate = (d, o = { weekday: "long", day: "numeric", month: "long" }) => d.toLocaleDateString("en-IN", o);
+
+const blank = () => ({ name: "", sky: "auto", sound: false, ambient: "off", checkins: {}, gratitude: [], letters: [], breaths: 0, kind: {}, created: Date.now() });
+let S;
+try { S = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || "{}")); } catch { S = blank(); }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
+
+/* ---------- inner weather ---------- */
+const W = [
+  null,
+  { id: 1, name: "Stormy", c: "#7a7f9e", line: "Heavy days happen. You showed up, and that counts." },
+  { id: 2, name: "Rainy", c: "#7fa6d9", line: "Rain helps things grow. Be gentle with yourself today." },
+  { id: 3, name: "Cloudy", c: "#b8c2d6", line: "Somewhere in between is a perfectly okay place to be." },
+  { id: 4, name: "Sunny", c: "#ffc857", line: "Lovely. Notice what made today feel light." },
+  { id: 5, name: "Glowing", c: "#ff8fab", line: "What a day! Save a little of this glow in your jar." },
+];
+function wIcon(id, size = 44) {
+  const s = `width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"`;
+  const cloud = (f, y = 0) => `<path transform="translate(0 ${y})" d="M14 34h21a8 8 0 0 0 0-16 11 11 0 0 0-21-1 8.5 8.5 0 0 0 0 17Z" fill="${f}"/>`;
+  if (id === 1) return `<svg ${s}>${cloud("#8b8fae", -4)}<path d="M25 30l-5 8h5l-3 7 8-10h-5l3-5Z" fill="#ffd166"/></svg>`;
+  if (id === 2) return `<svg ${s}>${cloud("#9db8df", -5)}<g stroke="#5f8fd0" stroke-width="2.6" stroke-linecap="round"><path d="M17 36l-2 5M25 36l-2 5M33 36l-2 5"/></g></svg>`;
+  if (id === 3) return `<svg ${s}><circle cx="17" cy="17" r="7" fill="#ffd98a"/>${cloud("#d3dae8", 2)}</svg>`;
+  if (id === 4) return `<svg ${s}><g stroke="#ffb347" stroke-width="2.6" stroke-linecap="round"><path d="M24 4v5M24 39v5M4 24h5M39 24h5M9.9 9.9l3.5 3.5M34.6 34.6l3.5 3.5M9.9 38.1l3.5-3.5M34.6 13.4l3.5-3.5"/></g><circle cx="24" cy="24" r="10" fill="#ffc857"/></svg>`;
+  return `<svg ${s}><path d="M6 32a18 18 0 0 1 36 0" fill="none" stroke="#ff8fab" stroke-width="4"/><path d="M11 32a13 13 0 0 1 26 0" fill="none" stroke="#ffc857" stroke-width="4"/><path d="M16 32a8 8 0 0 1 16 0" fill="none" stroke="#8fe0c4" stroke-width="4"/><circle cx="35" cy="13" r="2" fill="#ffd166"/><circle cx="12" cy="12" r="1.5" fill="#b9a7ff"/></svg>`;
+}
+const TAGS = ["Work", "Family", "Friends", "Sleep", "Health", "Self-care", "Study", "Nature"];
+
+/* ---------- gentle content ---------- */
+const AFFIRM = [
+  "You don't have to have it all figured out to take the next small step.",
+  "Rest is not a reward. It's part of the work.",
+  "Your pace is still progress.",
+  "Some days the bravest thing is simply to begin again.",
+  "Breathe in what you need. Breathe out what you don't.",
+  "Be the kind of friend to yourself you are to others.",
+  "Small joys count. Notice one today.",
+  "You are allowed to take up space and time.",
+  "Feelings are weather, not climate. This will move.",
+  "Done gently is better than perfect.",
+  "You've survived every hard day so far.",
+  "Let today be enough.",
+  "Ask for help. It's a strength, not a burden.",
+  "Soft heart, strong roots.",
+  "Progress hides in ordinary days.",
+];
+const KIND = [
+  "Send a 'thinking of you' message to someone",
+  "Drink a full glass of water, slowly",
+  "Step outside and look at the sky for one minute",
+  "Thank someone who rarely gets thanked",
+  "Write down one thing you did well today",
+  "Stretch your shoulders and neck for 60 seconds",
+  "Put your phone away during your next meal",
+  "Compliment someone sincerely",
+  "Tidy one small corner of your space",
+  "Call a family member just to say hello",
+  "Listen to one song you love, eyes closed",
+  "Forgive yourself for one small mistake",
+];
+const dayIndex = (arr) => { const d = new Date(); return arr[(d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % arr.length]; };
+
+/* ---------- sky by time ---------- */
+function autoSky() { const h = new Date().getHours(); return h < 5 ? "night" : h < 9 ? "dawn" : h < 16 ? "day" : h < 19 ? "dusk" : "night"; }
+function applySky() {
+  const sky = S.sky === "auto" ? autoSky() : S.sky;
+  document.documentElement.dataset.sky = sky;
+  $('meta[name="theme-color"]').content = sky === "night" ? "#1d1840" : sky === "day" ? "#bfe6ff" : sky === "dusk" ? "#ffb38a" : "#ffd9c2";
+  applyWeatherFx();
+}
+(function stars() { const el = $("#stars"); let h = ""; for (let i = 0; i < 60; i++) h += `<i style="left:${Math.random() * 100}%;top:${Math.random() * 60}%;animation-delay:${Math.random() * 3}s;opacity:${0.4 + Math.random() * 0.6}"></i>`; el.innerHTML = h; })();
+function applyWeatherFx() {
+  const c = S.checkins[dkey()]; const fx = $("#weatherFx");
+  if (c && c.mood <= 2 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let h = ""; const n = c.mood === 1 ? 46 : 28;
+    for (let i = 0; i < n; i++) h += `<i style="left:${Math.random() * 100}%;animation-duration:${0.7 + Math.random() * 0.6}s;animation-delay:${Math.random() * 2}s"></i>`;
+    fx.innerHTML = h;
+  } else fx.innerHTML = "";
+}
+
+/* ---------- helpers ---------- */
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2400); }
+function petals(colors) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const el = $("#petals"); let h = "";
+  for (let i = 0; i < 26; i++) h += `<i style="left:${Math.random() * 100}%;background:${colors[i % colors.length]};animation-delay:${Math.random() * 0.6}s;animation-duration:${2 + Math.random() * 1.4}s"></i>`;
+  el.innerHTML = h; setTimeout(() => (el.innerHTML = ""), 3600);
+}
+function modal(html, onMount) { $("#modal").innerHTML = html; $("#modalBg").hidden = false; onMount && onMount($("#modal")); const f = $("#modal").querySelector("input,textarea,button"); f && f.focus(); }
+function closeModal() { $("#modalBg").hidden = true; $("#modal").innerHTML = ""; }
+$("#modalBg").addEventListener("click", (e) => { if (e.target.id === "modalBg") closeModal(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#modalBg").hidden) closeModal(); });
+function greeting() { const h = new Date().getHours(); return h < 5 ? "Still awake" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : h < 21 ? "Good evening" : "Good night"; }
+function streak() { let n = 0, d = new Date(); if (!S.checkins[dkey(d)]) d = addDays(d, -1); while (S.checkins[dkey(d)]) { n++; d = addDays(d, -1); } return n; }
+
+/* ---------- soft sounds (WebAudio, no files) ---------- */
+let AC, ambientNode;
+function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); return AC; }
+function chime(freq = 660, dur = 1.6) {
+  if (!S.sound) return; try {
+    const a = ac(), o = a.createOscillator(), g = a.createGain(), o2 = a.createOscillator();
+    o.type = "sine"; o.frequency.value = freq; o2.type = "sine"; o2.frequency.value = freq * 2.01;
+    g.gain.setValueAtTime(0.0001, a.currentTime); g.gain.exponentialRampToValueAtTime(0.18, a.currentTime + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
+    const g2 = a.createGain(); g2.gain.value = 0.25; o.connect(g); o2.connect(g2); g2.connect(g); g.connect(a.destination);
+    o.start(); o2.start(); o.stop(a.currentTime + dur); o2.stop(a.currentTime + dur);
+  } catch {}
+}
+function setAmbient(kind) {
+  S.ambient = kind; save();
+  if (ambientNode) { try { ambientNode.stop(); } catch {} ambientNode = null; }
+  if (kind === "off") return;
+  try {
+    const a = ac(), len = a.sampleRate * 4, buf = a.createBuffer(2, len, a.sampleRate);
+    for (let ch = 0; ch < 2; ch++) { const d = buf.getChannelData(ch); let last = 0; for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = kind === "rain" ? w * 0.5 : last * 3.5; } }
+    const src = a.createBufferSource(); src.buffer = buf; src.loop = true;
+    const f = a.createBiquadFilter(); f.type = kind === "rain" ? "highpass" : "lowpass"; f.frequency.value = kind === "rain" ? 900 : 500;
+    const g = a.createGain(); g.gain.value = kind === "rain" ? 0.06 : 0.35;
+    if (kind === "ocean") { const lfo = a.createOscillator(), lg = a.createGain(); lfo.frequency.value = 0.09; lg.gain.value = 0.25; lfo.connect(lg); lg.connect(g.gain); lfo.start(); }
+    src.connect(f); f.connect(g); g.connect(a.destination); src.start(); ambientNode = src;
+  } catch {}
+}
+
+/* ---------- icons ---------- */
+const I = {
+  logo: `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb38a"/><stop offset=".55" stop-color="#ff8fab"/><stop offset="1" stop-color="#b9a7ff"/></linearGradient></defs><circle cx="32" cy="32" r="30" fill="url(#lg)"/><path d="M32 47c-1-9-7-12-13-12 1 7 6 11 13 12Zm0 0c1-9 7-12 13-12-1 7-6 11-13 12Z" fill="#fff" opacity=".95"/><path d="M32 47V30" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="32" cy="23" r="7" fill="#fff6d8"/></svg>`,
+  today: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>`,
+  garden: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-3 2-5.5 5-5.5 0 3-2 5.5-5 5.5ZM12 15c0-2.5-2-4.5-4.5-4.5 0 2.5 2 4.5 4.5 4.5Z"/><path d="M5 21h14"/></svg>`,
+  breathe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h7"/></svg>`,
+  jar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8M9 3v3l-2.5 3.5A4 4 0 0 0 6 11.8V19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7.2a4 4 0 0 0-.5-2.3L15 6V3"/><path d="M10.5 14.5l1.5-1 1.5 1-.5 1.7h-2Z"/></svg>`,
+  me: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>`,
+  env: (open) => `<svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="20" rx="4" fill="${open ? "#ffe3d3" : "#ffd0b8"}"/><path d="M3 11l14 9 14-9" fill="none" stroke="#ff8f6b" stroke-width="2"/>${open ? "" : `<circle cx="17" cy="20" r="3.4" fill="#ff5d8f"/>`}</svg>`,
+};
+function flower(mood, i = 0, big = false) {
+  const c = W[mood].c, h = big ? 120 : 70 + mood * 12, petalsN = 5 + (mood > 3 ? 1 : 0);
+  let p = ""; for (let k = 0; k < petalsN; k++) { const a = (360 / petalsN) * k; p += `<ellipse cx="30" cy="${30 - 9}" rx="6" ry="10" fill="${c}" transform="rotate(${a} 30 30)" opacity=".92"/>`; }
+  const vb = `0 0 60 ${h + 30}`;
+  return `<svg viewBox="${vb}" style="height:${big ? 150 : Math.min(140, h + 20)}px" aria-label="${W[mood].name} flower"><g class="grow" style="animation-delay:${i * 90}ms"><g class="sway" style="animation-delay:${-i * 0.7}s"><path d="M30 ${h + 30} C 28 ${h - 10}, 33 ${h / 2 + 20}, 30 40" stroke="#5fb38f" stroke-width="3" fill="none"/><path d="M30 ${h / 2 + 40} c -10 -2 -14 -9 -14 -14 c 8 0 13 5 14 14Z" fill="#7fcca9"/><g transform="translate(0 10)">${p}<circle cx="30" cy="30" r="6.5" fill="#fff3c4"/><circle cx="30" cy="30" r="3" fill="#ffb347"/></g></g></g></svg>`;
+}
+function sprout() { return `<svg viewBox="0 0 60 60" style="height:46px" aria-label="empty day"><path d="M30 58V44" stroke="#9cc9b4" stroke-width="2.5" stroke-linecap="round"/><path d="M30 46c-6 0-9-4-9-8 5 0 9 3 9 8Zm0 0c6 0 9-4 9-8-5 0-9 3-9 8Z" fill="#b6dcc9" opacity=".8"/></svg>`; }
+
+/* ---------- router ---------- */
+const TABS = [["today", "Today"], ["garden", "Garden"], ["breathe", "Breathe"], ["jar", "Jar"], ["me", "Me"]];
+let current = "today", breathTimer = null;
+function renderTabs() {
+  const n = $("#tabs"); n.hidden = !S.name;
+  n.innerHTML = TABS.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${id === current}" data-tab="${id}">${I[id]}<span>${l}</span></button>`).join("");
+}
+$("#tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) go(b.dataset.tab); });
+function go(tab) { current = tab; stopBreath(); location.hash = tab; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+function header() { return `<header class="top"><div class="brand">${I.logo}<span>Sukoon</span></div><span class="chip-date">${fmtDate(new Date(), { weekday: "short", day: "numeric", month: "short" })}</span></header>`; }
+const credit = () => `<p class="credit">made with <span class="heart">♥</span> by <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">Madhuri</a></p>`;
+function render() {
+  applySky(); renderTabs();
+  const app = $("#app");
+  if (!S.name) { app.innerHTML = viewWelcome(); bindWelcome(); return; }
+  const v = { today: viewToday, garden: viewGarden, breathe: viewBreathe, jar: viewJar, me: viewMe }[current] || viewToday;
+  app.innerHTML = `${header()}<section class="view">${v()}</section>${credit()}`;
+  ({ today: bindToday, garden: () => {}, breathe: bindBreathe, jar: bindJar, me: bindMe }[current] || (() => {}))();
+}
+
+/* ---------- welcome ---------- */
+function viewWelcome() {
+  return `<section class="welcome view">
+    <div class="logo">${I.logo}</div>
+    <div><p class="k">welcome to</p><h1>Sukoon</h1><p class="sub">A calm little corner for your day.<br>Name your inner weather, grow a garden, breathe.</p></div>
+    <div class="card" style="text-align:left">
+      <label class="k" for="nameIn">What should I call you?</label>
+      <input id="nameIn" type="text" maxlength="24" placeholder="Your name" autocomplete="given-name" class="mt">
+      <button class="btn wide mt" id="startBtn" disabled>Begin ✿</button>
+      <p class="small mt" style="text-align:center">🔒 No account, no tracking. Everything stays on this device.</p>
+    </div>
+    ${credit()}
+  </section>`;
+}
+function bindWelcome() {
+  const i = $("#nameIn"), b = $("#startBtn");
+  i.addEventListener("input", () => (b.disabled = !i.value.trim()));
+  const go2 = () => { if (!i.value.trim()) return; S.name = i.value.trim(); save(); petals(["#ffb38a", "#ff8fab", "#b9a7ff", "#8fe0c4", "#ffd166"]); render(); };
+  b.addEventListener("click", go2); i.addEventListener("keydown", (e) => e.key === "Enter" && go2());
+  setTimeout(() => i.focus(), 300);
+}
+
+/* ---------- today ---------- */
+let draft = { mood: 0, tags: [], note: "" }, editing = false;
+function viewToday() {
+  const c = S.checkins[dkey()];
+  const kindIdx = KIND.indexOf(dayIndex(KIND)); const kindDone = S.kind[dkey()];
+  const top = `<h1>${greeting()},<br>${esc(S.name)} <span aria-hidden="true">☁︎</span></h1><p class="sub">${c && !editing ? "Thanks for checking in today." : "How's your inner weather today?"}</p>`;
+  let checkin;
+  if (c && !editing) {
+    checkin = `<div class="card"><div class="today-done">${wIcon(c.mood, 64)}<div><p class="k">today · ${W[c.mood].name}</p><p class="quote" style="font-size:1.02rem">${W[c.mood].line}</p></div></div>
+      ${c.tags?.length ? `<div class="tags">${c.tags.map((t) => `<span class="tag" aria-pressed="true">${esc(t)}</span>`).join("")}</div>` : ""}
+      ${c.note ? `<p class="small mt" style="white-space:pre-wrap">“${esc(c.note)}”</p>` : ""}
+      <div class="row mt"><button class="btn soft" id="editBtn">Edit check-in</button><button class="btn soft" data-go="garden">See garden ✿</button></div></div>`;
+  } else {
+    if (c && editing && !draft.mood) draft = { mood: c.mood, tags: [...(c.tags || [])], note: c.note || "" };
+    checkin = `<div class="card"><div class="weathers" role="radiogroup" aria-label="Inner weather">${W.slice(1).map((w) => `<button class="wbtn" style="--wc:${w.c}" role="radio" aria-pressed="${draft.mood === w.id}" aria-checked="${draft.mood === w.id}" data-mood="${w.id}">${wIcon(w.id)}<span>${w.name}</span></button>`).join("")}</div>
+      <p class="small mt" id="wline" style="min-height:1.3em">${draft.mood ? W[draft.mood].line : "Tap the one that feels closest. There's no wrong answer."}</p>
+      <p class="k mt">what's shaping it?</p><div class="tags">${TAGS.map((t) => `<button class="tag" aria-pressed="${draft.tags.includes(t)}" data-tag="${t}">${t}</button>`).join("")}</div>
+      <textarea id="note" rows="3" class="mt" maxlength="500" placeholder="Anything you'd like to remember about today? (optional)">${esc(draft.note)}</textarea>
+      <button class="btn wide mt" id="saveBtn" ${draft.mood ? "" : "disabled"}>${c ? "Update" : "Plant today's flower"} ✿</button></div>`;
+  }
+  const st = streak();
+  return `${top}${checkin}
+    <div class="card"><div class="minis"><div class="mini"><b>${st}</b><span>day streak</span></div><div class="mini"><b>${S.gratitude.length}</b><span>in your jar</span></div><div class="mini"><b>${S.breaths}</b><span>calm breaths</span></div></div></div>
+    <div class="card"><div class="card-h"><p class="k">today's small kindness</p><span class="small">${Object.keys(S.kind).length} done so far</span></div>
+      <p style="font-weight:700;font-size:1.02rem">${KIND[kindIdx]}</p>
+      <button class="btn ${kindDone ? "soft" : ""} mt" id="kindBtn">${kindDone ? "Done today ✓" : "I did it ♥"}</button></div>
+    <div class="card"><p class="k">a thought for today</p><p class="quote mt">${dayIndex(AFFIRM)}</p></div>
+    <button class="card" data-go="breathe" style="width:100%;text-align:left;display:flex;align-items:center;gap:14px"><span style="width:52px;height:52px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff,var(--mint) 45%,#8d78e0)"></span><span><b style="font-size:1.02rem">Take a one-minute breath</b><br><span class="small">Feeling tight? Let's slow down together.</span></span></button>`;
+}
+function bindToday() {
+  $$("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
+  $("#editBtn")?.addEventListener("click", () => { editing = true; draft = { mood: 0, tags: [], note: "" }; render(); });
+  $$("[data-mood]").forEach((b) => b.addEventListener("click", () => {
+    draft.mood = +b.dataset.mood; $$("[data-mood]").forEach((x) => { x.setAttribute("aria-pressed", x === b); x.setAttribute("aria-checked", x === b); });
+    $("#wline").textContent = W[draft.mood].line; $("#saveBtn").disabled = false; chime(440 + draft.mood * 70, 0.9);
+  }));
+  $$("[data-tag]").forEach((b) => b.addEventListener("click", () => { const t = b.dataset.tag; draft.tags = draft.tags.includes(t) ? draft.tags.filter((x) => x !== t) : [...draft.tags, t]; b.setAttribute("aria-pressed", draft.tags.includes(t)); }));
+  $("#note")?.addEventListener("input", (e) => (draft.note = e.target.value));
+  $("#saveBtn")?.addEventListener("click", () => {
+    const first = !S.checkins[dkey()];
+    S.checkins[dkey()] = { mood: draft.mood, tags: draft.tags, note: draft.note.trim(), t: Date.now() }; save();
+    petals([W[draft.mood].c, "#fff3c4", "#8fe0c4"]); chime(784, 1.8);
+    toast(first ? "A new flower is growing in your garden ✿" : "Check-in updated");
+    draft = { mood: 0, tags: [], note: "" }; editing = false; render();
+  });
+  $("#kindBtn")?.addEventListener("click", () => { if (S.kind[dkey()]) { delete S.kind[dkey()]; } else { S.kind[dkey()] = 1; petals(["#ff8fab", "#ffd166"]); chime(880, 1.2); toast("That was kind. The world is a little softer ♥"); } save(); render(); });
+}
+
+/* ---------- garden ---------- */
+function viewGarden() {
+  const today = new Date(), dow = (today.getDay() + 6) % 7, monday = addDays(today, -dow);
+  const days = [...Array(7)].map((_, i) => addDays(monday, i));
+  const bed = days.map((d, i) => { const c = S.checkins[dkey(d)]; const isT = dkey(d) === dkey(); return `<div class="plot ${isT ? "today" : ""}">${c ? flower(c.mood, i) : d > today ? "" : sprout()}<span class="d">${d.toLocaleDateString("en-IN", { weekday: "narrow" })}</span></div>`; }).join("");
+  const weekCount = days.filter((d) => S.checkins[dkey(d)]).length;
+  // 35-day grid aligned to weeks
+  const start = addDays(monday, -28); let heat = "";
+  for (let i = 0; i < 35; i++) { const d = addDays(start, i), c = S.checkins[dkey(d)]; heat += `<i title="${fmtDate(d, { day: "numeric", month: "short" })}${c ? " · " + W[c.mood].name : ""}" style="${c ? `background:${W[c.mood].c}` : d > today ? "opacity:.35" : ""}" ${dkey(d) === dkey() ? "data-today" : ""}></i>`; }
+  // 30-day chart
+  const pts = []; for (let i = 29; i >= 0; i--) { const d = addDays(today, -i), c = S.checkins[dkey(d)]; pts.push(c ? c.mood : null); }
+  const X = (i) => 10 + (i / 29) * 300, Y = (m) => 130 - (m - 1) * 28;
+  let path = "", dots = ""; pts.forEach((m, i) => { if (m == null) return; path += `${path ? "L" : "M"}${X(i).toFixed(1)} ${Y(m)} `; dots += `<circle cx="${X(i).toFixed(1)}" cy="${Y(m)}" r="4" fill="${W[m].c}" stroke="#fff" stroke-width="1.5"/>`; });
+  const counts = [0, 0, 0, 0, 0, 0]; Object.values(S.checkins).forEach((c) => counts[c.mood]++);
+  const total = Object.keys(S.checkins).length, top = total ? counts.indexOf(Math.max(...counts.slice(1)), 1) : 0;
+  const tagCount = {}; Object.values(S.checkins).forEach((c) => (c.tags || []).forEach((t) => (tagCount[t] = (tagCount[t] || 0) + 1)));
+  const topTags = Object.entries(tagCount).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([t]) => t);
+  return `<h1>Your garden</h1><p class="sub">Every check-in plants a flower. Its colour is the weather you felt.</p>
+    <div class="card"><div class="card-h"><p class="k">this week</p><span class="small">${weekCount}/7 flowers</span></div><div class="bed">${bed}</div></div>
+    <div class="card"><div class="minis"><div class="mini"><b>${streak()}</b><span>day streak</span></div><div class="mini"><b>${total}</b><span>check-ins</span></div><div class="mini" style="padding:8px">${top ? wIcon(top, 34) : "<b>–</b>"}<span>${top ? "often " + W[top].name.toLowerCase() : "most often"}</span></div></div>
+      ${topTags.length ? `<p class="small mt">Most mentioned: <b>${topTags.map(esc).join(", ")}</b></p>` : ""}</div>
+    <div class="card"><p class="k">last 5 weeks</p><div class="heat mt">${heat}</div>
+      <div class="legend">${W.slice(1).map((w) => `<span><i style="background:${w.c}"></i>${w.name}</span>`).join("")}</div></div>
+    <div class="card"><p class="k">30-day weather line</p>
+      ${path ? `<svg class="chart mt" viewBox="0 0 320 150" role="img" aria-label="Mood over 30 days">${[1, 2, 3, 4, 5].map((m) => `<line x1="10" x2="310" y1="${Y(m)}" y2="${Y(m)}" stroke="currentColor" opacity=".08"/>`).join("")}<path d="${path}" fill="none" stroke="url(#gl)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#b9a7ff"/><stop offset="1" stop-color="#ff8fab"/></linearGradient></defs>${dots}</svg>` : `<p class="small mt">Your line appears after your first check-in.</p>`}</div>`;
+}
+
+/* ---------- breathe ---------- */
+const PATTERNS = { calm: { name: "Calm", steps: [["Breathe in", 4], ["Hold", 2], ["Breathe out", 6]] }, box: { name: "Box", steps: [["Breathe in", 4], ["Hold", 4], ["Breathe out", 4], ["Hold", 4]] }, sleep: { name: "Sleep 4-7-8", steps: [["Breathe in", 4], ["Hold", 7], ["Breathe out", 8]] } };
+let pattern = "calm", cycles = 0;
+function viewBreathe() {
+  return `<h1>Breathe</h1><p class="sub">Follow the circle. Three slow rounds is enough to feel the shift.</p>
+    <div class="card"><div class="patterns">${Object.entries(PATTERNS).map(([k, p]) => `<button class="pbtn" aria-pressed="${k === pattern}" data-p="${k}">${p.name}</button>`).join("")}</div>
+      <div class="breath-stage"><div class="ring"></div><div class="orb" id="orb"></div><div class="breath-text"><b id="bt">Ready?</b><span id="bc">${PATTERNS[pattern].steps.map((s) => s[1]).join(" · ")}</span></div></div>
+      <button class="btn wide" id="bBtn">Start</button><p class="small mt" style="text-align:center" id="bInfo">${S.breaths} calm breaths so far</p></div>`;
+}
+function bindBreathe() {
+  $$("[data-p]").forEach((b) => b.addEventListener("click", () => { pattern = b.dataset.p; stopBreath(); render(); }));
+  $("#bBtn").addEventListener("click", () => (breathTimer ? (stopBreath(), render()) : startBreath()));
+}
+function startBreath() {
+  const steps = PATTERNS[pattern].steps, orb = $("#orb"); let i = 0; cycles = 0; $("#bBtn").textContent = "Stop";
+  const run = () => {
+    const [label, sec] = steps[i]; $("#bt").textContent = label; let left = sec; $("#bc").textContent = left;
+    orb.style.transitionDuration = sec + "s"; if (label === "Breathe in") { orb.style.transform = "scale(1.9)"; chime(523, 0.8); } else if (label === "Breathe out") { orb.style.transform = "scale(1)"; chime(392, 0.8); }
+    const tick = setInterval(() => { left--; if ($("#bc")) $("#bc").textContent = left > 0 ? left : ""; if (left <= 0) clearInterval(tick); }, 1000);
+    breathTimer = setTimeout(() => { clearInterval(tick); i++; if (i >= steps.length) { i = 0; cycles++; S.breaths++; save(); if ($("#bInfo")) $("#bInfo").textContent = `${cycles} round${cycles > 1 ? "s" : ""} · ${S.breaths} calm breaths so far`; } if ($("#orb")) run(); }, sec * 1000);
+    breathTimer.tick = tick;
+  };
+  run();
+}
+function stopBreath() { if (breathTimer) { clearTimeout(breathTimer); clearInterval(breathTimer.tick); breathTimer = null; if (cycles) toast(`${cycles} calm round${cycles > 1 ? "s" : ""}. Well done 🌿`); cycles = 0; } }
+
+/* ---------- jar & letters ---------- */
+let letterDays = 30;
+function jarSvg(n) {
+  const cap = Math.min(n, 40); let orbs = "";
+  for (let k = 0; k < cap; k++) { const row = Math.floor(k / 6), col = k % 6; const x = 30 + col * 14 + (row % 2) * 7 + ((k * 37) % 5), y = 150 - row * 13 - ((k * 13) % 4); const c = ["#ffd166", "#ff8fab", "#b9a7ff", "#8fe0c4", "#ffb38a"][k % 5]; orbs += `<circle cx="${x}" cy="${y}" r="6" fill="${c}" opacity=".95"><animate attributeName="opacity" values=".95;.55;.95" dur="${2 + (k % 4)}s" repeatCount="indefinite"/></circle>`; }
+  return `<svg class="jar" viewBox="0 0 140 170" aria-label="${n} memories in the jar"><rect x="38" y="6" width="64" height="16" rx="5" fill="#d9b48f"/><path d="M42 22h56v10c14 8 22 20 22 36v76a20 20 0 0 1-20 20H40a20 20 0 0 1-20-20V68c0-16 8-28 22-36Z" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.9)" stroke-width="2.5"/><clipPath id="jc"><path d="M42 24h56v9c14 8 21 20 21 35v76a19 19 0 0 1-19 19H40a19 19 0 0 1-19-19V68c0-15 7-27 21-35Z"/></clipPath><g clip-path="url(#jc)">${orbs}</g><path d="M34 70c0-10 4-18 12-24" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7" fill="none"/></svg>`;
+}
+function viewJar() {
+  const now = Date.now();
+  const letters = [...S.letters].sort((a, b) => a.openOn - b.openOn);
+  return `<h1>Little jar of good</h1><p class="sub">Drop in one good thing. On a heavy day, pull one out.</p>
+    <div class="card"><div class="jar-wrap">${jarSvg(S.gratitude.length)}<div><p class="k">${S.gratitude.length} memories</p>
+      <input id="gIn" type="text" maxlength="140" placeholder="Today I'm grateful for…" class="mt">
+      <div class="row mt"><button class="btn" id="gAdd">Add ✦</button><button class="btn soft" id="gPick" ${S.gratitude.length ? "" : "disabled"}>Pick one</button></div></div></div>
+      <div id="gOut"></div></div>
+    <div class="card"><div class="card-h"><p class="k">letters to future me</p>${IENV()}</div>
+      <textarea id="lIn" rows="4" maxlength="1200" placeholder="Dear future me…"></textarea>
+      <p class="k mt">open in</p><div class="seg mt">${[[7, "1 week"], [30, "1 month"], [90, "3 months"], [365, "1 year"]].map(([d, l]) => `<button data-ld="${d}" aria-pressed="${d === letterDays}">${l}</button>`).join("")}</div>
+      <button class="btn wide mt" id="lSeal">Seal letter ✉</button>
+      ${letters.length ? `<ul class="letters">${letters.map((l) => { const open = now >= l.openOn; const days = Math.ceil((l.openOn - now) / 864e5); return `<li class="letter">${I.env(open)}<div class="meta"><b>${open ? "Ready to open" : "Sealed"}</b><span>Written ${fmtDate(new Date(l.t), { day: "numeric", month: "short", year: "numeric" })} · ${open ? "opened for you" : `opens in ${days} day${days > 1 ? "s" : ""}`}</span></div>${open ? `<button class="btn soft" data-open="${l.t}">Read</button>` : `<span aria-hidden="true">🔒</span>`}</li>`; }).join("")}</ul>` : ""}</div>`;
+}
+const IENV = () => `<span class="small">${S.letters.length} written</span>`;
+function bindJar() {
+  const add = () => { const v = $("#gIn").value.trim(); if (!v) return; S.gratitude.push({ text: v, t: Date.now() }); save(); petals(["#ffd166", "#ff8fab", "#b9a7ff"]); chime(988, 1.4); toast("Saved in your jar ✦"); render(); };
+  $("#gAdd").addEventListener("click", add); $("#gIn").addEventListener("keydown", (e) => e.key === "Enter" && add());
+  $("#gPick").addEventListener("click", () => { const g = S.gratitude[Math.floor(Math.random() * S.gratitude.length)]; $("#gOut").innerHTML = `<div class="memory">“${esc(g.text)}”<small>from ${fmtDate(new Date(g.t), { day: "numeric", month: "long", year: "numeric" })}</small></div>`; chime(740, 1.2); });
+  $$("[data-ld]").forEach((b) => b.addEventListener("click", () => { letterDays = +b.dataset.ld; $$("[data-ld]").forEach((x) => x.setAttribute("aria-pressed", x === b)); }));
+  $("#lSeal").addEventListener("click", () => { const v = $("#lIn").value.trim(); if (!v) { toast("Write a few words first ✎"); return; } S.letters.push({ text: v, t: Date.now(), openOn: Date.now() + letterDays * 864e5 }); save(); petals(["#ffb38a", "#ff5d8f"]); toast(`Sealed. See you in ${letterDays} days ✉`); render(); });
+  $$("[data-open]").forEach((b) => b.addEventListener("click", () => { const l = S.letters.find((x) => String(x.t) === b.dataset.open); modal(`<p class="k">a letter from ${fmtDate(new Date(l.t), { day: "numeric", month: "long", year: "numeric" })}</p><p class="quote mt" style="white-space:pre-wrap">${esc(l.text)}</p><button class="btn wide mt" id="mClose">Close</button>`, (m) => $("#mClose", m).addEventListener("click", closeModal)); }));
+}
+
+/* ---------- me ---------- */
+function viewMe() {
+  const skyNames = { auto: "Follows the time", dawn: "Dawn", day: "Day", dusk: "Dusk", night: "Night" };
+  return `<h1>${esc(S.name)}'s corner</h1><p class="sub">Since ${fmtDate(new Date(S.created), { month: "long", year: "numeric" })} · ${Object.keys(S.checkins).length} check-ins</p>
+    <div class="card"><div class="list">
+      <button class="li" id="mName"><span class="ic">✏️</span><span class="tx"><b>Change name</b><span>Currently “${esc(S.name)}”</span></span><span class="end">›</span></button>
+      <button class="li" id="mSky"><span class="ic">🎨</span><span class="tx"><b>Sky</b><span>${skyNames[S.sky]}</span></span><span class="end">›</span></button>
+      <div class="li"><span class="ic">🔔</span><span class="tx"><b>Soft sounds</b><span>Chimes when you check in or breathe</span></span><button class="switch" role="switch" aria-checked="${S.sound}" id="mSound" aria-label="Soft sounds"></button></div>
+      <button class="li" id="mAmb"><span class="ic">🌧️</span><span class="tx"><b>Ambient sound</b><span>${{ off: "Off", rain: "Gentle rain", ocean: "Ocean waves" }[S.ambient]}</span></span><span class="end">›</span></button>
+      <button class="li" id="mRem"><span class="ic">⏰</span><span class="tx"><b>Daily reminder</b><span>Add a gentle 9 pm nudge to your calendar</span></span><span class="end">›</span></button>
+      <button class="li" id="mShare"><span class="ic">💌</span><span class="tx"><b>Share Sukoon</b><span>Someone you love might need a calm corner</span></span><span class="end">›</span></button>
+      <button class="li" id="mExport"><span class="ic">📥</span><span class="tx"><b>Download my data</b><span>A copy of everything, as a file</span></span><span class="end">›</span></button>
+      <button class="li" id="mReset"><span class="ic">🌱</span><span class="tx"><b>Start fresh</b><span>Erase everything on this device</span></span><span class="end">›</span></button>
+    </div></div>
+    <div class="card"><p class="k">privacy</p><p class="small mt">Sukoon has no servers, no accounts and no trackers. Your name, moods, notes and letters live only in this browser on this device.</p></div>
+    <div class="card support"><p class="k">having a really hard day?</p><p class="mt" style="font-weight:700">You don't have to carry it alone.</p>
+      <p class="small mt">In India, call <a href="tel:14416">Tele-MANAS 14416</a> (free, 24×7). Elsewhere, find a helpline at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. If you're in danger, call your local emergency number.</p></div>
+    <div class="card"><p class="k">about</p><p class="quote mt" style="font-size:1.02rem">Sukoon (सुकून) means peace of mind. I made it for the days that need a softer pace, and for the people I care about.</p><p class="small mt">— Madhuri Patil · <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">portfolio</a> · <a href="https://www.linkedin.com/in/madhuri-patil084" target="_blank" rel="noopener">LinkedIn</a></p></div>`;
+}
+function bindMe() {
+  $("#mName").addEventListener("click", () => modal(`<h2>Change name</h2><input id="nIn" type="text" maxlength="24" class="mt" value="${esc(S.name)}"><div class="row mt"><button class="btn soft" id="nC">Cancel</button><button class="btn" id="nS">Save</button></div>`, (m) => { $("#nC", m).onclick = closeModal; $("#nS", m).onclick = () => { const v = $("#nIn", m).value.trim(); if (v) { S.name = v; save(); } closeModal(); render(); toast("Name updated"); }; }));
+  $("#mSky").addEventListener("click", () => modal(`<h2>Choose your sky</h2><div class="list mt">${[["auto", "Follows the time", "Dawn, day, dusk and night as the hours pass"], ["dawn", "Dawn", "Peach and lilac"], ["day", "Day", "Clear blue"], ["dusk", "Dusk", "Golden pink"], ["night", "Night", "Deep indigo with stars"]].map(([k, l, s]) => `<button class="li" data-skyopt="${k}"><span class="tx"><b>${l}</b><span>${s}</span></span><span class="end">${S.sky === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-skyopt]", m).forEach((b) => (b.onclick = () => { S.sky = b.dataset.skyopt; save(); closeModal(); render(); }))));
+  $("#mSound").addEventListener("click", (e) => { S.sound = !S.sound; save(); e.currentTarget.setAttribute("aria-checked", S.sound); if (S.sound) chime(660, 1); });
+  $("#mAmb").addEventListener("click", () => modal(`<h2>Ambient sound</h2><p class="small mt">Plays softly while Sukoon is open. Made right here in your browser, no downloads.</p><div class="list mt">${[["off", "Off"], ["rain", "Gentle rain"], ["ocean", "Ocean waves"]].map(([k, l]) => `<button class="li" data-amb="${k}"><span class="tx"><b>${l}</b></span><span class="end">${S.ambient === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-amb]", m).forEach((b) => (b.onclick = () => { setAmbient(b.dataset.amb); closeModal(); render(); }))));
+  $("#mRem").addEventListener("click", () => {
+    const d = new Date(); d.setHours(21, 0, 0, 0); const p = (n) => String(n).padStart(2, "0"); const st = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T210000`;
+    const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Sukoon//EN", "BEGIN:VEVENT", `UID:sukoon-${Date.now()}@sukoon`, `DTSTAMP:${st}`, `DTSTART:${st}`, "DURATION:PT5M", "RRULE:FREQ=DAILY", "SUMMARY:Sukoon · how's your inner weather?", "DESCRIPTION:A two-minute check-in: https://madhurids012-jpg.github.io/sukoon/", "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Time for Sukoon", "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+    dl(new Blob([ics], { type: "text/calendar" }), "sukoon-reminder.ics"); toast("Open the file to add it to your calendar ⏰");
+  });
+  $("#mShare").addEventListener("click", async () => { const data = { title: "Sukoon", text: "A calm little corner for your day 🌿", url: "https://madhurids012-jpg.github.io/sukoon/" }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(data.url); toast("Link copied ✓"); } } catch {} });
+  $("#mExport").addEventListener("click", () => { dl(new Blob([JSON.stringify(S, null, 2)], { type: "application/json" }), `sukoon-${dkey()}.json`); toast("Your data is downloading"); });
+  $("#mReset").addEventListener("click", () => modal(`<h2>Start fresh?</h2><p class="small mt">This erases your name, check-ins, jar and letters from this device. It can't be undone.</p><div class="row mt"><button class="btn soft" id="rC">Keep everything</button><button class="btn" id="rY" style="background:#e5486f;color:#fff">Erase</button></div>`, (m) => { $("#rC", m).onclick = closeModal; $("#rY", m).onclick = () => { setAmbient("off"); S = blank(); save(); closeModal(); current = "today"; render(); }; }));
+}
+function dl(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+
+/* ---------- boot ---------- */
+const h = location.hash.slice(1); if (TABS.some(([id]) => id === h)) current = h;
+window.addEventListener("hashchange", () => { const t = location.hash.slice(1); if (t !== current && TABS.some(([id]) => id === t)) { current = t; stopBreath(); render(); } });
+render();
+setInterval(applySky, 5 * 60 * 1000);
+if (S.ambient !== "off") { const resume = () => { setAmbient(S.ambient); document.removeEventListener("pointerdown", resume); }; document.addEventListener("pointerdown", resume); }
+if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
