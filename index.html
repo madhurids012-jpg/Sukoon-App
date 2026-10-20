@@ -3,223 +3,224 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Sukoon · your calm corner</title>
-<meta name="description" content="Sukoon is a gentle daily check-in: name your inner weather, grow a mood garden, breathe, keep a gratitude jar and write letters to your future self. Everything stays on your phone.">
+<title>Sukoon · सुकून</title>
+<meta name="description" content="Sukoon is a calm daily ritual with an Indian soul: name your mann ka mausam, grow a rangoli one petal a day, breathe with a diya, fill a gullak with good moments and post a chitthi to your future self. Everything stays on your phone.">
 <meta name="author" content="Madhuri Patil">
-<meta name="theme-color" content="#2a2148">
+<meta name="theme-color" content="#fbf1e1">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sukoon">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sukoon · your calm corner">
-<meta property="og:description" content="Name your inner weather, grow a mood garden, breathe, and write to your future self. Private by design. Made with love by Madhuri Patil.">
+<meta property="og:title" content="Sukoon · सुकून — a calm daily ritual">
+<meta property="og:description" content="Grow a rangoli one petal a day, breathe with a diya, fill a gullak with good moments. Private by design. Made with love by Madhuri Patil.">
 <meta property="og:url" content="https://sukoon-madhuri.vercel.app/">
 <meta property="og:image" content="https://sukoon-madhuri.vercel.app/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://sukoon-madhuri.vercel.app/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#2a2148; --ink-2:#5b5279; --muted:#8a82a6;
-  --card:rgba(255,255,255,.72); --card-2:rgba(255,255,255,.55); --line:rgba(42,33,72,.10);
-  --peach:#ffb38a; --rose:#ff8fab; --lav:#b9a7ff; --mint:#8fe0c4; --sun:#ffd166; --sky:#8ecdf7;
-  --w1:#7a7f9e; --w2:#7fa6d9; --w3:#b8c2d6; --w4:#ffc857; --w5:#ff8fab;
-  --r:22px; --shadow:0 18px 50px -24px rgba(42,33,72,.45);
-  --sky-a:#ffd9c2; --sky-b:#f6c6e6; --sky-c:#c9c1ff;
-  --nav-h:74px;
+  --paper:#fbf1e1; --paper-2:#f6e6cc; --ink:#2b2a63; --ink-2:#5a5584; --muted:#9a8f86;
+  --card:#fffaf1; --card-2:#f7ead4; --line:rgba(43,42,99,.12);
+  --marigold:#f4a623; --haldi:#ffcf4a; --terracotta:#d9673f; --kumkum:#c2334d; --peacock:#127475; --mehendi:#5d8a3a; --indigo:#2b2a63; --lotus:#e86f96;
+  --shadow:0 14px 34px -20px rgba(74,40,10,.45), 0 2px 0 rgba(255,255,255,.6) inset;
+  --r:20px; --nav-h:72px;
 }
-[data-sky="day"]{--sky-a:#bfe6ff;--sky-b:#d9f0ff;--sky-c:#fff3d6}
-[data-sky="dusk"]{--sky-a:#ffb38a;--sky-b:#f58fb1;--sky-c:#8d78e0}
-[data-sky="night"]{--sky-a:#1d1840;--sky-b:#2c2468;--sky-c:#4a3a8c;--ink:#f3efff;--ink-2:#cfc7ef;--muted:#a59dcb;--card:rgba(40,32,84,.62);--card-2:rgba(40,32,84,.45);--line:rgba(255,255,255,.12)}
+[data-sky="subah"]{--paper:#fdeedd;--paper-2:#f9dcc4}
+[data-sky="din"]{--paper:#fbf1e1;--paper-2:#f6e6cc}
+[data-sky="shaam"]{--paper:#f8dcc6;--paper-2:#efc1a3;--card:#fff5ea;--card-2:#f6dcc6}
+[data-sky="raat"]{--paper:#1d1c45;--paper-2:#14133a;--ink:#fbefd9;--ink-2:#d9cdb8;--muted:#a59fc6;--card:#2a2960;--card-2:#353473;--line:rgba(255,255,255,.12);--shadow:0 14px 34px -20px rgba(0,0,0,.7)}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
-html,body{height:100%}
-body{font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--sky-c);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .6s}
-button,input,textarea,select{font:inherit;color:inherit}
+html,body{min-height:100%}
+body{font-family:Mukta,system-ui,sans-serif;font-size:16.5px;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .8s,color .6s}
+button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--lav);outline-offset:2px;border-radius:10px}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:2px;border-radius:10px}
+.hi{font-family:Mukta;font-weight:600;color:var(--terracotta);letter-spacing:0}
+[data-sky="raat"] .hi{color:var(--haldi)}
 
-/* ---------- sky scene ---------- */
-.sky{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-a),var(--sky-b) 55%,var(--sky-c));transition:background 1.2s}
-.orb-sun{position:absolute;right:12%;top:9%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff6d8 0 35%,#ffd98a 60%,rgba(255,217,138,0) 72%);filter:blur(.3px);animation:float 9s ease-in-out infinite}
-[data-sky="night"] .orb-sun{background:radial-gradient(circle,#fffbe9 0 30%,#e8e2ff 52%,rgba(232,226,255,0) 70%);width:90px;height:90px}
-.cloud{position:absolute;height:38px;border-radius:40px;background:rgba(255,255,255,.7);filter:blur(1px);animation:drift linear infinite}
-.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
-.cloud::before{width:46px;height:46px;left:18px;top:-22px}.cloud::after{width:60px;height:60px;left:48px;top:-30px}
-[data-sky="night"] .cloud{background:rgba(255,255,255,.08)}
-.stars{position:absolute;inset:0;opacity:0;transition:opacity 1.2s}
-[data-sky="night"] .stars{opacity:1}
-.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:twinkle 3s ease-in-out infinite}
-.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:28vh;min-height:160px}
-.weather{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.weather i{position:absolute;top:-20px;width:2px;height:16px;border-radius:2px;background:rgba(255,255,255,.65);animation:rain linear infinite}
-@keyframes float{50%{transform:translateY(10px)}}
-@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
-@keyframes twinkle{50%{opacity:.25}}
-@keyframes rain{to{transform:translateY(110vh)}}
+/* ---------- backdrop: mandala pattern + toran ---------- */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1200px 500px at 50% -10%,var(--paper-2),transparent 70%),var(--paper)}
+.bg::after{content:"";position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23d9673f' stroke-width='1.2'%3E%3Ccircle cx='60' cy='60' r='8'/%3E%3Ccircle cx='60' cy='60' r='22'/%3E%3Cpath d='M60 38c6 8 6 14 0 22-6-8-6-14 0-22zM60 82c6-8 6-14 0-22-6 8-6 14 0 22zM38 60c8-6 14-6 22 0-8 6-14 6-22 0zM82 60c-8-6-14-6-22 0 8 6 14 6 22 0z'/%3E%3C/g%3E%3Cg fill='%23d9673f'%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='120' cy='0' r='2'/%3E%3Ccircle cx='0' cy='120' r='2'/%3E%3Ccircle cx='120' cy='120' r='2'/%3E%3Ccircle cx='60' cy='0' r='1.4'/%3E%3Ccircle cx='0' cy='60' r='1.4'/%3E%3Ccircle cx='120' cy='60' r='1.4'/%3E%3Ccircle cx='60' cy='120' r='1.4'/%3E%3C/g%3E%3C/svg%3E")}
+[data-sky="raat"] .bg::after{opacity:.09;filter:hue-rotate(20deg) brightness(1.6)}
+.lights{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+[data-sky="raat"] .lights{opacity:1}
+.lights i{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd88a;box-shadow:0 0 8px 2px rgba(255,200,90,.6);animation:twinkle 3.5s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.3}}
+.toran{height:46px;margin:0 -16px;pointer-events:none}
+.toran svg{width:100%;height:58px;display:block}
+.swing{animation:swing 4s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.monsoon{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+.monsoon i{position:absolute;top:-20px;width:1.6px;height:18px;border-radius:2px;background:rgba(63,132,184,.45);animation:rain linear infinite}
+@keyframes rain{to{transform:translateY(110vh) translateX(-30px)}}
 
 /* ---------- layout ---------- */
-.app{max-width:520px;margin:0 auto;min-height:100%;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(var(--nav-h) + env(safe-area-inset-bottom) + 28px)}
-header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.brand{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;letter-spacing:.2px}
-.brand svg{width:34px;height:34px}
-.chip-date{font-size:.8rem;font-weight:700;color:var(--ink-2);background:var(--card-2);padding:6px 12px;border-radius:999px;backdrop-filter:blur(10px)}
-h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(1.8rem,7vw,2.3rem);line-height:1.12;letter-spacing:-.3px}
-h2{font-family:Fraunces,serif;font-weight:600;font-size:1.25rem;letter-spacing:-.1px}
-.sub{color:var(--ink-2);margin-top:6px;font-size:1rem}
-.card{background:var(--card);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.55);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-top:16px}
-[data-sky="night"] .card{border-color:rgba(255,255,255,.08)}
+.app{max-width:520px;margin:0 auto;padding:0 16px calc(var(--nav-h) + env(safe-area-inset-bottom) + 30px)}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 6px) 0 14px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:38px;height:38px}
+.brand b{font-family:"Rozha One",serif;font-weight:400;font-size:1.5rem;line-height:1;letter-spacing:.3px}
+.brand small{display:block;font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.06em}
+.chip-date{font-size:.8rem;font-weight:700;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+h1{font-family:"Rozha One",serif;font-weight:400;font-size:clamp(1.85rem,7.4vw,2.35rem);line-height:1.1}
+h2{font-family:"Rozha One",serif;font-weight:400;font-size:1.3rem}
+.sub{color:var(--ink-2);margin-top:6px;font-size:1.02rem;line-height:1.45}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-top:16px}
+.card.border-motif::before{content:"";position:absolute;left:14px;right:14px;top:-1px;height:4px;border-radius:0 0 6px 6px;background:repeating-linear-gradient(90deg,var(--marigold) 0 10px,var(--kumkum) 10px 14px,var(--peacock) 14px 24px,var(--kumkum) 24px 28px)}
 .card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.k{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.k{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.k .hi{text-transform:none;letter-spacing:0;font-size:.9rem;margin-left:4px}
 .view{animation:rise .45s cubic-bezier(.2,.8,.2,1)}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}}
+.small{font-size:.9rem;color:var(--ink-2)}
+.mt{margin-top:14px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
-/* ---------- weather picker ---------- */
-.weathers{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.wbtn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px 10px;border-radius:18px;background:var(--card-2);border:2px solid transparent;transition:transform .2s,border-color .2s,background .2s}
-.wbtn svg{width:44px;height:44px;transition:transform .3s}
-.wbtn span{font-size:.72rem;font-weight:800;color:var(--ink-2)}
-.wbtn:hover svg{transform:translateY(-3px) scale(1.06)}
-.wbtn[aria-pressed="true"]{border-color:var(--wc);background:color-mix(in srgb,var(--wc) 22%,transparent);transform:translateY(-2px)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.tag{padding:7px 12px;border-radius:999px;background:var(--card-2);font-size:.82rem;font-weight:700;color:var(--ink-2);border:1.5px solid transparent}
-.tag[aria-pressed="true"]{border-color:var(--lav);background:color-mix(in srgb,var(--lav) 28%,transparent);color:var(--ink)}
-textarea,input[type=text],input[type=date]{width:100%;border:1.5px solid var(--line);background:var(--card-2);border-radius:16px;padding:12px 14px;resize:none;outline:none}
-textarea:focus,input:focus{border-color:var(--lav)}
+/* ---------- mood picker ---------- */
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.mbtn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 2px 9px;border-radius:16px;background:var(--card-2);border:2px solid transparent;transition:transform .2s,border-color .2s,background .2s}
+.mbtn svg{width:44px;height:44px;transition:transform .3s}
+.mbtn b{font-size:.78rem;font-weight:800;color:var(--ink)}
+.mbtn span{font-size:.72rem;font-weight:600;color:var(--muted)}
+.mbtn:hover svg{transform:translateY(-3px) rotate(-4deg)}
+.mbtn[aria-pressed="true"]{border-color:var(--mc);background:color-mix(in srgb,var(--mc) 18%,var(--card));transform:translateY(-2px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{padding:6px 12px;border-radius:999px;background:var(--card-2);font-size:.86rem;font-weight:700;color:var(--ink-2);border:1.5px solid transparent}
+.tag[aria-pressed="true"]{border-color:var(--peacock);background:color-mix(in srgb,var(--peacock) 16%,var(--card));color:var(--ink)}
+textarea,input[type=text]{width:100%;border:1.5px dashed color-mix(in srgb,var(--terracotta) 40%,transparent);background:var(--card-2);border-radius:14px;padding:12px 14px;resize:none;outline:none}
+textarea:focus,input:focus{border-style:solid;border-color:var(--terracotta)}
 textarea::placeholder,input::placeholder{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:800;background:var(--ink);color:#fff;transition:transform .15s,box-shadow .2s}
-[data-sky="night"] .btn{background:#f3efff;color:#2a2148}
-.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(42,33,72,.6)}
-.btn:active{transform:scale(.98)}
-.btn.soft{background:var(--card-2);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:14px;font-weight:800;background:var(--terracotta);color:#fff;box-shadow:0 4px 0 #a9472a;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #a9472a}
+.btn.soft{background:var(--card-2);color:var(--ink);box-shadow:0 3px 0 var(--line)}
+.btn.indigo{background:var(--indigo);box-shadow:0 4px 0 #17164a}
+[data-sky="raat"] .btn.indigo{background:var(--haldi);color:#2b2a63;box-shadow:0 4px 0 #b8902a}
 .btn.wide{width:100%}
 .btn:disabled{opacity:.45;pointer-events:none}
-.row{display:flex;gap:10px;align-items:center}
-.mt{margin-top:14px}
-.today-done{display:flex;align-items:center;gap:14px}
-.today-done svg{width:64px;height:64px;flex:none}
-.small{font-size:.86rem;color:var(--ink-2)}
-.quote{font-family:Fraunces,serif;font-size:1.12rem;line-height:1.45}
-.quote small{display:block;font-family:Nunito;font-size:.78rem;color:var(--muted);margin-top:8px;font-weight:700}
+.done-head{display:flex;align-items:center;gap:14px}
+.done-head svg{width:62px;height:62px;flex:none}
+.quote{font-family:"Rozha One",serif;font-size:1.15rem;line-height:1.4}
+.quote .hi{display:block;font-size:.95rem;margin-top:6px}
 .minis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.mini{background:var(--card-2);border-radius:18px;padding:12px;text-align:center}
-.mini b{display:block;font-family:Fraunces,serif;font-size:1.6rem}
-.mini span{font-size:.72rem;font-weight:800;color:var(--muted)}
+.mini{background:var(--card-2);border-radius:14px;padding:12px 6px;text-align:center}
+.mini b{display:block;font-family:"Rozha One",serif;font-size:1.6rem;line-height:1.1}
+.mini span{font-size:.74rem;font-weight:800;color:var(--muted)}
+.diyas{display:flex;gap:2px;justify-content:center;margin-bottom:2px;height:20px;align-items:flex-end}
+.diyas svg{width:12px;height:18px}
 
-/* ---------- garden ---------- */
-.bed{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;align-items:end;height:150px;padding:0 4px;background:linear-gradient(180deg,transparent 70%,rgba(143,224,196,.35) 70%);border-radius:16px}
-.plot{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
-.plot svg{width:100%;max-width:56px;overflow:visible}
-.plot .d{font-size:.7rem;font-weight:800;color:var(--muted);margin-top:4px}
-.plot.today .d{color:var(--ink)}
-.grow{transform-origin:50% 100%;animation:grow 1s cubic-bezier(.2,.9,.3,1.2) both}
-@keyframes grow{from{transform:scaleY(0)}}
-.sway{transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
-@keyframes sway{50%{transform:rotate(3deg)}}
-.heat{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.heat i{aspect-ratio:1;border-radius:8px;background:var(--card-2);position:relative}
-.heat i[data-today]{outline:2px solid var(--ink-2);outline-offset:1px}
-.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:.74rem;font-weight:700;color:var(--ink-2)}
+/* ---------- rangoli ---------- */
+.rangoli-wrap{display:grid;place-items:center;padding:6px 0}
+.rangoli{width:100%;max-width:340px;aspect-ratio:1;overflow:visible}
+.petal{transform-box:fill-box;transform-origin:center;animation:bloom .7s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes bloom{from{transform:scale(0);opacity:0}}
+.spin{transform-origin:170px 170px;animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toran-week{width:100%;height:120px;display:block;overflow:visible}
+.legend{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:10px;font-size:.78rem;font-weight:700;color:var(--ink-2)}
 .legend span{display:inline-flex;align-items:center;gap:5px}
-.legend i{width:10px;height:10px;border-radius:3px}
-.chart{width:100%;height:150px;display:block}
+.legend i{width:11px;height:11px;border-radius:50% 0}
+.chart{width:100%;height:140px;display:block}
 
-/* ---------- breathe ---------- */
+/* ---------- diya ---------- */
 .patterns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.pbtn{padding:8px 14px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.84rem;color:var(--ink-2);border:1.5px solid transparent}
-.pbtn[aria-pressed="true"]{border-color:var(--mint);background:color-mix(in srgb,var(--mint) 30%,transparent);color:var(--ink)}
-.breath-stage{position:relative;height:300px;display:grid;place-items:center;margin:10px 0}
-.ring{position:absolute;width:250px;height:250px;border-radius:50%;border:2px dashed color-mix(in srgb,var(--ink) 18%,transparent)}
-.orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--mint) 45%,#6fc7d9 75%,#8d78e0);box-shadow:0 0 60px 10px color-mix(in srgb,var(--mint) 55%,transparent);transition:transform 4s cubic-bezier(.45,0,.55,1);will-change:transform}
-.breath-text{position:absolute;text-align:center;pointer-events:none}
-.breath-text b{display:block;font-family:Fraunces,serif;font-size:1.5rem;color:#2a2148}
-.breath-text span{font-weight:800;color:#2a2148;opacity:.7}
+.pbtn{padding:7px 13px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.86rem;color:var(--ink-2);border:1.5px solid transparent}
+.pbtn[aria-pressed="true"]{border-color:var(--marigold);background:color-mix(in srgb,var(--marigold) 20%,var(--card));color:var(--ink)}
+.diya-stage{position:relative;height:300px;display:grid;place-items:center;margin:6px 0}
+.halo{position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,80,.55),rgba(255,160,40,.15) 50%,transparent 70%);transition:transform 4s cubic-bezier(.45,0,.55,1);top:30px}
+.diya-svg{position:relative;width:200px;height:220px;overflow:visible;margin-top:-30px}
+.flame{transform-origin:100px 118px;transform-box:view-box;transition:transform 4s cubic-bezier(.45,0,.55,1)}
+.flicker{transform-origin:100px 118px;transform-box:view-box;animation:flicker .18s ease-in-out infinite alternate}
+@keyframes flicker{to{transform:scaleX(.94) skewX(2deg)}}
+.breath-text{position:absolute;bottom:2px;left:0;right:0;text-align:center}
+.breath-text b{display:block;font-family:"Rozha One",serif;font-size:1.5rem}
+.breath-text span{font-weight:800;color:var(--muted)}
 
-/* ---------- jar ---------- */
-.jar-wrap{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}
-.jar{width:120px;height:146px}.jar-wrap>div{min-width:0}
-.memory{font-family:Fraunces,serif;font-size:1.05rem;line-height:1.45;padding:14px;border-radius:16px;background:color-mix(in srgb,var(--sun) 22%,transparent);margin-top:12px;animation:rise .4s}
-.memory small{display:block;font-family:Nunito;font-size:.74rem;color:var(--muted);font-weight:700;margin-top:6px}
-.letters{list-style:none;display:grid;gap:10px;margin-top:12px}
-.letter{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:var(--card-2)}
-.letter svg{width:34px;height:34px;flex:none}
-.letter .meta{flex:1;min-width:0}
-.letter .meta b{display:block;font-size:.92rem}
-.letter .meta span{font-size:.78rem;color:var(--muted);font-weight:700}
+/* ---------- gullak & chitthi ---------- */
+.gullak-wrap{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
+.gullak-wrap>div{min-width:0}
+.gullak{width:120px;height:130px;overflow:visible}
+.coin-drop{animation:drop .8s cubic-bezier(.5,0,.8,.4) forwards}
+@keyframes drop{from{transform:translateY(-60px);opacity:1}to{transform:translateY(18px);opacity:0}}
+.chit{position:relative;margin-top:16px;padding:14px 16px;background:#fff7d6;color:#3b2e1a;border-radius:4px;transform:rotate(-1.2deg);box-shadow:0 8px 18px -10px rgba(0,0,0,.4);font-family:"Rozha One",serif;font-size:1.06rem;line-height:1.45;animation:rise .4s}
+.chit::before{content:"";position:absolute;top:-8px;left:50%;width:60px;height:16px;margin-left:-30px;background:rgba(244,166,35,.55);transform:rotate(2deg)}
+.chit small{display:block;font-family:Mukta;font-size:.78rem;color:#8a7457;font-weight:700;margin-top:6px}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
-.seg button{padding:7px 12px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.8rem;color:var(--ink-2);border:1.5px solid transparent}
-.seg button[aria-pressed="true"]{border-color:var(--peach);background:color-mix(in srgb,var(--peach) 28%,transparent);color:var(--ink)}
+.seg button{padding:6px 12px;border-radius:999px;background:var(--card-2);font-weight:800;font-size:.84rem;color:var(--ink-2);border:1.5px solid transparent}
+.seg button[aria-pressed="true"]{border-color:var(--peacock);background:color-mix(in srgb,var(--peacock) 16%,var(--card));color:var(--ink)}
+.letters{list-style:none;display:grid;gap:12px;margin-top:14px}
+.inland{position:relative;display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;border-radius:6px;background:#cfe3ef;color:#1f3550;border:1px solid #9cbdd3;overflow:hidden}
+.inland::before{content:"";position:absolute;inset:0;border:5px solid transparent;border-image:repeating-linear-gradient(45deg,#c2334d 0 8px,#fff 8px 12px,#2b6cb0 12px 20px,#fff 20px 24px) 5;opacity:.7;pointer-events:none}
+.stamp{flex:none;width:44px;height:52px;background:#fff;padding:3px;border:2px dotted #c9b9a0;display:grid;place-items:center;transform:rotate(4deg)}
+.stamp div{width:100%;height:100%;background:linear-gradient(160deg,var(--marigold),var(--terracotta));display:grid;place-items:center;color:#fff;font-family:"Rozha One";font-size:1.1rem}
+.inland .meta{flex:1;min-width:0}
+.inland .meta b{display:block;font-size:.95rem}
+.inland .meta span{font-size:.8rem;font-weight:700;opacity:.75}
+.inland .btn.soft{background:#fff;color:#1f3550;box-shadow:0 3px 0 #9cbdd3}
+.seal{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e05a6f,#9c1f36);display:grid;place-items:center;color:#ffd6dc;font-family:"Rozha One";box-shadow:0 2px 4px rgba(0,0,0,.3);flex:none}
 
 /* ---------- me ---------- */
-.list{display:grid;gap:2px}
-.li{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line);width:100%;text-align:left}
+.list{display:grid}
+.li{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px dashed var(--line);width:100%;text-align:left}
 .li:last-child{border-bottom:0}
-.li .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--card-2);flex:none;font-size:1.05rem}
-.li .tx{flex:1}
-.li .tx b{display:block;font-size:.95rem}
-.li .tx span{font-size:.8rem;color:var(--muted);font-weight:600}
-.li .end{font-size:.85rem;font-weight:800;color:var(--ink-2)}
+.li .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--card-2);flex:none;font-size:1.05rem}
+.li .tx{flex:1;min-width:0}
+.li .tx b{display:block;font-size:.98rem}
+.li .tx span{font-size:.84rem;color:var(--muted);font-weight:600}
+.li .end{font-weight:800;color:var(--ink-2)}
 .switch{width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;transition:background .2s;flex:none}
 .switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .2s}
-.switch[aria-checked="true"]{background:var(--mint)}
+.switch[aria-checked="true"]{background:var(--peacock)}
 .switch[aria-checked="true"]::after{transform:translateX(18px)}
-.support{background:linear-gradient(135deg,color-mix(in srgb,var(--rose) 30%,transparent),color-mix(in srgb,var(--lav) 30%,transparent))}
+.support{background:linear-gradient(135deg,color-mix(in srgb,var(--lotus) 18%,var(--card)),color-mix(in srgb,var(--marigold) 16%,var(--card)))}
 .support a{font-weight:800}
-.credit{text-align:center;margin-top:26px;font-size:.86rem;color:var(--ink-2);font-weight:700}
+.credit{text-align:center;margin-top:26px;font-size:.92rem;color:var(--ink-2);font-weight:700;line-height:1.5}
 .credit a{text-decoration:none;border-bottom:1.5px dotted currentColor}
-.heart{display:inline-block;color:#ff5d8f;animation:beat 1.6s ease-in-out infinite}
+.credit .hi{display:block;font-size:.84rem;font-weight:600}
+.heart{display:inline-block;color:var(--kumkum);animation:beat 1.6s ease-in-out infinite}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
 
 /* ---------- nav ---------- */
-nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);width:min(492px,calc(100% - 24px));height:var(--nav-h);display:grid;grid-template-columns:repeat(5,1fr);background:var(--card);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border:1px solid rgba(255,255,255,.55);border-radius:26px;box-shadow:0 20px 40px -18px rgba(42,33,72,.5);z-index:20;padding:6px}
-[data-sky="night"] nav.tabs{border-color:rgba(255,255,255,.08)}
-.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--muted);transition:color .2s,background .2s}
-.tab svg{width:24px;height:24px}
-.tab[aria-selected="true"]{color:var(--ink);background:var(--card-2)}
+nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);width:min(492px,calc(100% - 24px));height:var(--nav-h);display:grid;grid-template-columns:repeat(5,1fr);background:var(--indigo);border-radius:22px;box-shadow:0 18px 36px -16px rgba(43,42,99,.7);z-index:20;padding:6px;overflow:hidden}
+nav.tabs::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:repeating-linear-gradient(90deg,var(--marigold) 0 8px,var(--kumkum) 8px 12px)}
+[data-sky="raat"] nav.tabs{background:#0f0e30;border:1px solid rgba(255,255,255,.08)}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:16px;font-size:.74rem;font-weight:800;color:rgba(251,239,217,.6);transition:color .2s,background .2s;line-height:1.1}
+.tab svg{width:23px;height:23px;margin-bottom:2px}
+.tab small{font-size:.64rem;font-weight:600;opacity:.8}
+.tab[aria-selected="true"]{color:#fff;background:rgba(255,255,255,.12)}
+.tab[aria-selected="true"] svg{color:var(--haldi)}
 
-/* ---------- onboarding / modal / toast ---------- */
-.welcome{min-height:calc(100vh - 120px);display:flex;flex-direction:column;justify-content:center;text-align:center;gap:18px}
-.welcome .logo{width:96px;height:96px;margin:0 auto;animation:float 6s ease-in-out infinite}
-.welcome h1{font-size:clamp(2.2rem,9vw,2.9rem)}
-.welcome input{text-align:center;font-size:1.1rem;padding:15px}
-.modal-bg{position:fixed;inset:0;background:rgba(20,14,40,.45);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:50;padding:16px}
-.modal{background:var(--card);backdrop-filter:blur(24px);border-radius:24px;padding:22px;max-width:420px;width:100%;box-shadow:var(--shadow);animation:rise .3s}
-[data-sky="night"] .modal{background:rgba(40,32,84,.92)}
-.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 26px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:800;font-size:.9rem;opacity:0;transition:opacity .3s,transform .3s;z-index:60;white-space:nowrap;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis}
-[data-sky="night"] .toast{background:#f3efff;color:#2a2148}
+/* ---------- welcome / modal / toast ---------- */
+.welcome{min-height:calc(100vh - 90px);display:flex;flex-direction:column;justify-content:center;text-align:center;gap:16px;padding-top:6px}
+.welcome .logo{width:150px;height:150px;margin:0 auto}
+.welcome .logo .spin{transform-origin:50px 50px;animation-duration:60s}
+.welcome h1{font-size:clamp(2.6rem,11vw,3.3rem)}
+.welcome h1 .hi{display:block;font-family:"Rozha One";font-size:1.4rem;font-weight:400;margin-top:2px}
+.welcome input{text-align:center;font-size:1.15rem;padding:14px}
+.modal-bg{position:fixed;inset:0;background:rgba(20,16,50,.5);backdrop-filter:blur(5px);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{background:var(--card);border-radius:20px;padding:22px;max-width:420px;width:100%;box-shadow:var(--shadow);animation:rise .3s;border:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 26px);transform:translateX(-50%) translateY(20px);background:var(--indigo);color:#fff;padding:11px 18px;border-radius:14px;font-weight:700;font-size:.92rem;opacity:0;transition:opacity .3s,transform .3s;z-index:60;white-space:nowrap;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis}
+[data-sky="raat"] .toast{background:var(--haldi);color:#2b2a63}
 .toast.show{opacity:1;transform:translateX(-50%)}
 .petals{position:fixed;inset:0;pointer-events:none;z-index:55;overflow:hidden}
-.petals i{position:absolute;top:-20px;width:12px;height:12px;border-radius:12px 0;animation:fall 2.6s ease-in forwards}
-@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
+.petals i{position:absolute;top:-20px;width:14px;height:14px;border-radius:14px 0;animation:fall 2.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(600deg);opacity:.3}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-@media (min-width:760px){.app{padding-top:36px}}
-@media (max-width:640px){.orb-sun{width:150px;height:150px;top:-48px;right:-40px;opacity:.85}[data-sky="night"] .orb-sun{width:120px;height:120px;top:-36px;right:-30px}.chip-date{position:relative;z-index:1}}
-.btn{white-space:nowrap}
 </style>
 </head>
 <body>
-<div class="sky" aria-hidden="true">
-  <div class="stars" id="stars"></div>
-  <div class="orb-sun"></div>
-  <div class="cloud" style="top:16%;width:110px;animation-duration:70s;animation-delay:-20s"></div>
-  <div class="cloud" style="top:30%;width:80px;animation-duration:95s;animation-delay:-60s;opacity:.7"></div>
-  <div class="cloud" style="top:8%;width:70px;animation-duration:120s;animation-delay:-5s;opacity:.6"></div>
-  <div class="weather" id="weatherFx"></div>
-  <svg class="hills" viewBox="0 0 1200 300" preserveAspectRatio="none">
-    <path d="M0 170 C 200 90 380 210 600 150 S 1000 80 1200 160 V300 H0Z" fill="rgba(255,255,255,.28)"/>
-    <path d="M0 220 C 240 160 420 260 700 210 S 1050 170 1200 220 V300 H0Z" fill="rgba(143,224,196,.35)"/>
-    <path d="M0 260 C 300 230 520 290 820 255 S 1100 240 1200 262 V300 H0Z" fill="rgba(111,199,170,.38)"/>
-  </svg>
-</div>
+<div class="bg" aria-hidden="true"><div class="lights" id="lights"></div></div>
+<div class="monsoon" id="monsoon" aria-hidden="true"></div>
 
 <main class="app" id="app" aria-live="polite"></main>
-
 <nav class="tabs" id="tabs" role="tablist" aria-label="Sections" hidden></nav>
 <div class="toast" id="toast" role="status"></div>
 <div class="petals" id="petals" aria-hidden="true"></div>
@@ -227,368 +228,407 @@ nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe
 
 <script>
 /* =========================================================
-   Sukoon · your calm corner
-   Made with love by Madhuri Patil · all data stays in localStorage
+   Sukoon · सुकून — a calm daily ritual with an Indian soul
+   Designed & built with love by Madhuri Patil
+   All data stays on this device (localStorage).
    ========================================================= */
-const KEY = "sukoon.v1";
+const KEY = "sukoon.v2", OLD = "sukoon.v1", SITE = "https://sukoon-madhuri.vercel.app/";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const dkey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
-const fmtDate = (d, o = { weekday: "long", day: "numeric", month: "long" }) => d.toLocaleDateString("en-IN", o);
+const fmt = (d, o = { day: "numeric", month: "short" }) => d.toLocaleDateString("en-IN", o);
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const blank = () => ({ name: "", sky: "auto", sound: false, ambient: "off", checkins: {}, gratitude: [], letters: [], breaths: 0, kind: {}, created: Date.now() });
 let S;
-try { S = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || "{}")); } catch { S = blank(); }
+try {
+  const raw = localStorage.getItem(KEY) || localStorage.getItem(OLD) || "{}";
+  S = Object.assign(blank(), JSON.parse(raw));
+  if (!["auto", "subah", "din", "shaam", "raat"].includes(S.sky)) S.sky = "auto";
+  if (!["off", "rain", "tanpura"].includes(S.ambient)) S.ambient = "off";
+} catch { S = blank(); }
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
 
-/* ---------- inner weather ---------- */
-const W = [
-  null,
-  { id: 1, name: "Stormy", c: "#7a7f9e", line: "Heavy days happen. You showed up, and that counts." },
-  { id: 2, name: "Rainy", c: "#7fa6d9", line: "Rain helps things grow. Be gentle with yourself today." },
-  { id: 3, name: "Cloudy", c: "#b8c2d6", line: "Somewhere in between is a perfectly okay place to be." },
-  { id: 4, name: "Sunny", c: "#ffc857", line: "Lovely. Notice what made today feel light." },
-  { id: 5, name: "Glowing", c: "#ff8fab", line: "What a day! Save a little of this glow in your jar." },
+/* ---------- mann ka mausam ---------- */
+const M = [null,
+  { id: 1, en: "Stormy", hi: "तूफ़ान", c: "#5c5a8a", line: "Heavy skies pass. You showed up today, and that matters.", lineHi: "यह भी गुज़र जाएगा।" },
+  { id: 2, en: "Rainy", hi: "बारिश", c: "#3f84b8", line: "Like the monsoon, this softens the ground for something new.", lineHi: "थोड़ा धीरे चलना भी ठीक है।" },
+  { id: 3, en: "Cloudy", hi: "बादल", c: "#9aa6b8", line: "An in-between day is still a good day to be gentle.", lineHi: "आज बस सांस लेना काफ़ी है।" },
+  { id: 4, en: "Sunny", hi: "धूप", c: "#f4a623", line: "Warm and steady. Notice what made today feel light.", lineHi: "इस धूप को याद रखना।" },
+  { id: 5, en: "Festive", hi: "उत्सव", c: "#e0457b", line: "A little festival inside you. Drop a coin in your gullak!", lineHi: "आज का दिन खिल उठा है।" },
 ];
-function wIcon(id, size = 44) {
+function mIcon(id, size = 44) {
   const s = `width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"`;
   const cloud = (f, y = 0) => `<path transform="translate(0 ${y})" d="M14 34h21a8 8 0 0 0 0-16 11 11 0 0 0-21-1 8.5 8.5 0 0 0 0 17Z" fill="${f}"/>`;
-  if (id === 1) return `<svg ${s}>${cloud("#8b8fae", -4)}<path d="M25 30l-5 8h5l-3 7 8-10h-5l3-5Z" fill="#ffd166"/></svg>`;
-  if (id === 2) return `<svg ${s}>${cloud("#9db8df", -5)}<g stroke="#5f8fd0" stroke-width="2.6" stroke-linecap="round"><path d="M17 36l-2 5M25 36l-2 5M33 36l-2 5"/></g></svg>`;
-  if (id === 3) return `<svg ${s}><circle cx="17" cy="17" r="7" fill="#ffd98a"/>${cloud("#d3dae8", 2)}</svg>`;
-  if (id === 4) return `<svg ${s}><g stroke="#ffb347" stroke-width="2.6" stroke-linecap="round"><path d="M24 4v5M24 39v5M4 24h5M39 24h5M9.9 9.9l3.5 3.5M34.6 34.6l3.5 3.5M9.9 38.1l3.5-3.5M34.6 13.4l3.5-3.5"/></g><circle cx="24" cy="24" r="10" fill="#ffc857"/></svg>`;
-  return `<svg ${s}><path d="M6 32a18 18 0 0 1 36 0" fill="none" stroke="#ff8fab" stroke-width="4"/><path d="M11 32a13 13 0 0 1 26 0" fill="none" stroke="#ffc857" stroke-width="4"/><path d="M16 32a8 8 0 0 1 16 0" fill="none" stroke="#8fe0c4" stroke-width="4"/><circle cx="35" cy="13" r="2" fill="#ffd166"/><circle cx="12" cy="12" r="1.5" fill="#b9a7ff"/></svg>`;
+  if (id === 1) return `<svg ${s}>${cloud("#6f6c9e", -4)}<path d="M25 29l-5 8h5l-3 8 8-11h-5l3-5Z" fill="#ffcf4a"/></svg>`;
+  if (id === 2) return `<svg ${s}>${cloud("#7fb0d6", -5)}<g fill="#3f84b8">${[[14, 0], [23, 2], [32, 0]].map(([x, y]) => `<path d="M${x} ${33 + y}c0 0 3 3.5 3 5.5a3 3 0 0 1-6 0c0-2 3-5.5 3-5.5Z"/>`).join("")}</g></svg>`;
+  if (id === 3) return `<svg ${s}><circle cx="16" cy="17" r="7" fill="#ffcf4a"/>${cloud("#c3cad6", 2)}</svg>`;
+  if (id === 4) return `<svg ${s}><g fill="#f4a623">${[...Array(12)].map((_, k) => `<path d="M24 3l2.4 6h-4.8Z" transform="rotate(${k * 30} 24 24)"/>`).join("")}</g><circle cx="24" cy="24" r="11" fill="#ffcf4a"/><circle cx="24" cy="24" r="6.5" fill="#f4a623"/></svg>`;
+  return `<svg ${s}><g transform="translate(24 24)">${[...Array(8)].map((_, k) => `<ellipse rx="4.6" ry="10" cy="-10" fill="${k % 2 ? "#f4a623" : "#e0457b"}" transform="rotate(${k * 45})"/>`).join("")}<circle r="6" fill="#ffcf4a"/><circle r="2.6" fill="#c2334d"/></g></svg>`;
 }
-const TAGS = ["Work", "Family", "Friends", "Sleep", "Health", "Self-care", "Study", "Nature"];
+const TAGS = ["Work", "Family", "Friends", "Sleep", "Health", "Self-care", "Study", "Prayer", "Nature"];
 
-/* ---------- gentle content ---------- */
-const AFFIRM = [
-  "You don't have to have it all figured out to take the next small step.",
-  "Rest is not a reward. It's part of the work.",
-  "Your pace is still progress.",
-  "Some days the bravest thing is simply to begin again.",
-  "Breathe in what you need. Breathe out what you don't.",
-  "Be the kind of friend to yourself you are to others.",
-  "Small joys count. Notice one today.",
-  "You are allowed to take up space and time.",
-  "Feelings are weather, not climate. This will move.",
-  "Done gently is better than perfect.",
-  "You've survived every hard day so far.",
-  "Let today be enough.",
-  "Ask for help. It's a strength, not a burden.",
-  "Soft heart, strong roots.",
-  "Progress hides in ordinary days.",
+/* ---------- gentle words (original lines) ---------- */
+const THOUGHTS = [
+  ["Slow is also a speed. Today, choose gentle.", "धीरे चलना भी चलना है।"],
+  ["Rest is not laziness. It is how roots grow.", "आराम भी ज़रूरी है।"],
+  ["You don't need to finish the whole road today. Just the next step.", "बस अगला कदम।"],
+  ["A cup of chai and five quiet minutes can change a day.", "थोड़ा रुको, थोड़ा जियो।"],
+  ["Be as kind to yourself as you are to the people you love.", "खुद से भी प्यार करो।"],
+  ["Feelings are like weather. They come, they go, and you remain.", "मौसम बदलते रहते हैं।"],
+  ["Small joys are still joys. Notice one today.", "छोटी खुशियाँ भी खुशियाँ हैं।"],
+  ["You have survived every hard day so far. That is strength.", "तुम मज़बूत हो।"],
+  ["Ask for help when it's heavy. Sharing makes it lighter.", "बात करने से मन हल्का होता है।"],
+  ["Done with love is better than done perfectly.", "प्यार से किया काम सबसे अच्छा।"],
+  ["Let today be enough. Let you be enough.", "आज काफ़ी है, तुम काफ़ी हो।"],
+  ["Breathe in calm, breathe out hurry.", "सांस लो, सुकून पाओ।"],
 ];
 const KIND = [
-  "Send a 'thinking of you' message to someone",
+  "Call a grandparent or an elder just to hear their voice",
+  "Thank the person who makes your chai or keeps your space clean",
+  "Send a 'thinking of you' message to an old friend",
   "Drink a full glass of water, slowly",
   "Step outside and look at the sky for one minute",
-  "Thank someone who rarely gets thanked",
   "Write down one thing you did well today",
-  "Stretch your shoulders and neck for 60 seconds",
-  "Put your phone away during your next meal",
+  "Feed a bird or water a plant",
+  "Eat one meal without your phone",
   "Compliment someone sincerely",
-  "Tidy one small corner of your space",
-  "Call a family member just to say hello",
-  "Listen to one song you love, eyes closed",
   "Forgive yourself for one small mistake",
+  "Listen to one song you love, eyes closed",
+  "Stretch your neck and shoulders for sixty seconds",
 ];
-const dayIndex = (arr) => { const d = new Date(); return arr[(d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % arr.length]; };
+const pickToday = (arr) => { const d = new Date(); return arr[(d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % arr.length]; };
 
-/* ---------- sky by time ---------- */
-function autoSky() { const h = new Date().getHours(); return h < 5 ? "night" : h < 9 ? "dawn" : h < 16 ? "day" : h < 19 ? "dusk" : "night"; }
+/* ---------- time of day (subah, din, shaam, raat) ---------- */
+const autoSky = () => { const h = new Date().getHours(); return h < 5 ? "raat" : h < 10 ? "subah" : h < 17 ? "din" : h < 19 ? "shaam" : "raat"; };
+const SKY_META = { subah: ["Morning", "सुबह", "#fdeedd"], din: ["Day", "दिन", "#fbf1e1"], shaam: ["Evening", "शाम", "#f8dcc6"], raat: ["Night", "रात", "#1d1c45"] };
 function applySky() {
   const sky = S.sky === "auto" ? autoSky() : S.sky;
   document.documentElement.dataset.sky = sky;
-  $('meta[name="theme-color"]').content = sky === "night" ? "#1d1840" : sky === "day" ? "#bfe6ff" : sky === "dusk" ? "#ffb38a" : "#ffd9c2";
-  applyWeatherFx();
+  $('meta[name="theme-color"]').content = SKY_META[sky][2];
+  const c = S.checkins[dkey()], m = $("#monsoon");
+  if (c && c.mood <= 2 && !RM) { let h = ""; for (let i = 0; i < (c.mood === 1 ? 40 : 24); i++) h += `<i style="left:${Math.random() * 110}%;animation-duration:${0.8 + Math.random() * 0.6}s;animation-delay:${Math.random() * 2}s"></i>`; m.innerHTML = h; } else m.innerHTML = "";
 }
-(function stars() { const el = $("#stars"); let h = ""; for (let i = 0; i < 60; i++) h += `<i style="left:${Math.random() * 100}%;top:${Math.random() * 60}%;animation-delay:${Math.random() * 3}s;opacity:${0.4 + Math.random() * 0.6}"></i>`; el.innerHTML = h; })();
-function applyWeatherFx() {
-  const c = S.checkins[dkey()]; const fx = $("#weatherFx");
-  if (c && c.mood <= 2 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let h = ""; const n = c.mood === 1 ? 46 : 28;
-    for (let i = 0; i < n; i++) h += `<i style="left:${Math.random() * 100}%;animation-duration:${0.7 + Math.random() * 0.6}s;animation-delay:${Math.random() * 2}s"></i>`;
-    fx.innerHTML = h;
-  } else fx.innerHTML = "";
-}
+(function lights() { let h = ""; for (let i = 0; i < 40; i++) h += `<i style="left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation-delay:${Math.random() * 3.5}s"></i>`; $("#lights").innerHTML = h; })();
+function greeting() { const h = new Date().getHours(); return h < 5 ? ["Still awake", "अभी तक जाग रहे हो?"] : h < 12 ? ["Shubh prabhat", "सुप्रभात"] : h < 17 ? ["Namaste", "नमस्ते"] : h < 21 ? ["Shubh sandhya", "शुभ संध्या"] : ["Shubh ratri", "शुभ रात्रि"]; }
 
 /* ---------- helpers ---------- */
-function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2400); }
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2500); }
 function petals(colors) {
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const el = $("#petals"); let h = "";
-  for (let i = 0; i < 26; i++) h += `<i style="left:${Math.random() * 100}%;background:${colors[i % colors.length]};animation-delay:${Math.random() * 0.6}s;animation-duration:${2 + Math.random() * 1.4}s"></i>`;
-  el.innerHTML = h; setTimeout(() => (el.innerHTML = ""), 3600);
+  if (RM) return; const el = $("#petals"); let h = "";
+  for (let i = 0; i < 30; i++) h += `<i style="left:${Math.random() * 100}%;background:${colors[i % colors.length]};animation-delay:${Math.random() * 0.6}s;animation-duration:${2.2 + Math.random() * 1.4}s"></i>`;
+  el.innerHTML = h; setTimeout(() => (el.innerHTML = ""), 3800);
 }
 function modal(html, onMount) { $("#modal").innerHTML = html; $("#modalBg").hidden = false; onMount && onMount($("#modal")); const f = $("#modal").querySelector("input,textarea,button"); f && f.focus(); }
 function closeModal() { $("#modalBg").hidden = true; $("#modal").innerHTML = ""; }
 $("#modalBg").addEventListener("click", (e) => { if (e.target.id === "modalBg") closeModal(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#modalBg").hidden) closeModal(); });
-function greeting() { const h = new Date().getHours(); return h < 5 ? "Still awake" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : h < 21 ? "Good evening" : "Good night"; }
 function streak() { let n = 0, d = new Date(); if (!S.checkins[dkey(d)]) d = addDays(d, -1); while (S.checkins[dkey(d)]) { n++; d = addDays(d, -1); } return n; }
+function dl(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 
-/* ---------- soft sounds (WebAudio, no files) ---------- */
-let AC, ambientNode;
+/* ---------- sound: temple bell + tanpura drone, made in the browser ---------- */
+let AC, amb = [];
 function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); return AC; }
-function chime(freq = 660, dur = 1.6) {
+function bell(f = 523, dur = 2.4) {
   if (!S.sound) return; try {
-    const a = ac(), o = a.createOscillator(), g = a.createGain(), o2 = a.createOscillator();
-    o.type = "sine"; o.frequency.value = freq; o2.type = "sine"; o2.frequency.value = freq * 2.01;
-    g.gain.setValueAtTime(0.0001, a.currentTime); g.gain.exponentialRampToValueAtTime(0.18, a.currentTime + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur);
-    const g2 = a.createGain(); g2.gain.value = 0.25; o.connect(g); o2.connect(g2); g2.connect(g); g.connect(a.destination);
-    o.start(); o2.start(); o.stop(a.currentTime + dur); o2.stop(a.currentTime + dur);
+    const a = ac(), out = a.createGain(); out.gain.value = 0.16; out.connect(a.destination);
+    [[1, 1], [2.76, 0.5], [5.4, 0.25], [8.9, 0.12]].forEach(([r, g]) => { const o = a.createOscillator(), e = a.createGain(); o.type = "sine"; o.frequency.value = f * r; e.gain.setValueAtTime(0.0001, a.currentTime); e.gain.exponentialRampToValueAtTime(g, a.currentTime + 0.01); e.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur / r ** 0.3); o.connect(e); e.connect(out); o.start(); o.stop(a.currentTime + dur); });
   } catch {}
 }
 function setAmbient(kind) {
-  S.ambient = kind; save();
-  if (ambientNode) { try { ambientNode.stop(); } catch {} ambientNode = null; }
+  S.ambient = kind; save(); amb.forEach((n) => { try { n.stop(); } catch {} }); amb = [];
   if (kind === "off") return;
   try {
-    const a = ac(), len = a.sampleRate * 4, buf = a.createBuffer(2, len, a.sampleRate);
-    for (let ch = 0; ch < 2; ch++) { const d = buf.getChannelData(ch); let last = 0; for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = kind === "rain" ? w * 0.5 : last * 3.5; } }
-    const src = a.createBufferSource(); src.buffer = buf; src.loop = true;
-    const f = a.createBiquadFilter(); f.type = kind === "rain" ? "highpass" : "lowpass"; f.frequency.value = kind === "rain" ? 900 : 500;
-    const g = a.createGain(); g.gain.value = kind === "rain" ? 0.06 : 0.35;
-    if (kind === "ocean") { const lfo = a.createOscillator(), lg = a.createGain(); lfo.frequency.value = 0.09; lg.gain.value = 0.25; lfo.connect(lg); lg.connect(g.gain); lfo.start(); }
-    src.connect(f); f.connect(g); g.connect(a.destination); src.start(); ambientNode = src;
+    const a = ac(), master = a.createGain(); master.connect(a.destination);
+    if (kind === "rain") {
+      const len = a.sampleRate * 4, buf = a.createBuffer(2, len, a.sampleRate);
+      for (let ch = 0; ch < 2; ch++) { const d = buf.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * 0.5; }
+      const src = a.createBufferSource(); src.buffer = buf; src.loop = true; const f = a.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 1400; f.Q.value = 0.6;
+      master.gain.value = 0.07; src.connect(f); f.connect(master); src.start(); amb.push(src);
+    } else {
+      // tanpura-like drone: Pa, Sa, Sa, low Sa, plucked in a slow cycle
+      master.gain.value = 0.08; const sa = 130.81, notes = [sa * 0.75, sa, sa, sa / 2]; let t = a.currentTime + 0.1;
+      const pluck = (fr, at) => { [1, 2, 3, 4, 5].forEach((h) => { const o = a.createOscillator(), g = a.createGain(); o.type = "sine"; o.frequency.value = fr * h * (1 + (Math.random() - 0.5) * 0.002); g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(0.5 / h, at + 0.04); g.gain.exponentialRampToValueAtTime(0.0001, at + 3.8); o.connect(g); g.connect(master); o.start(at); o.stop(at + 4); }); };
+      const loop = { off: false, stop() { this.off = true; } }; amb.push(loop);
+      const sched = () => { if (loop.off) return; while (t < a.currentTime + 4) { notes.forEach((n, i) => pluck(n, t + i * 1.05)); t += 4.4; } setTimeout(sched, 1500); };
+      sched();
+    }
   } catch {}
 }
 
-/* ---------- icons ---------- */
-const I = {
-  logo: `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb38a"/><stop offset=".55" stop-color="#ff8fab"/><stop offset="1" stop-color="#b9a7ff"/></linearGradient></defs><circle cx="32" cy="32" r="30" fill="url(#lg)"/><path d="M32 47c-1-9-7-12-13-12 1 7 6 11 13 12Zm0 0c1-9 7-12 13-12-1 7-6 11-13 12Z" fill="#fff" opacity=".95"/><path d="M32 47V30" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="32" cy="23" r="7" fill="#fff6d8"/></svg>`,
-  today: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>`,
-  garden: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-3 2-5.5 5-5.5 0 3-2 5.5-5 5.5ZM12 15c0-2.5-2-4.5-4.5-4.5 0 2.5 2 4.5 4.5 4.5Z"/><path d="M5 21h14"/></svg>`,
-  breathe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h7"/></svg>`,
-  jar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8M9 3v3l-2.5 3.5A4 4 0 0 0 6 11.8V19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7.2a4 4 0 0 0-.5-2.3L15 6V3"/><path d="M10.5 14.5l1.5-1 1.5 1-.5 1.7h-2Z"/></svg>`,
-  me: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>`,
-  env: (open) => `<svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="20" rx="4" fill="${open ? "#ffe3d3" : "#ffd0b8"}"/><path d="M3 11l14 9 14-9" fill="none" stroke="#ff8f6b" stroke-width="2"/>${open ? "" : `<circle cx="17" cy="20" r="3.4" fill="#ff5d8f"/>`}</svg>`,
-};
-function flower(mood, i = 0, big = false) {
-  const c = W[mood].c, h = big ? 120 : 70 + mood * 12, petalsN = 5 + (mood > 3 ? 1 : 0);
-  let p = ""; for (let k = 0; k < petalsN; k++) { const a = (360 / petalsN) * k; p += `<ellipse cx="30" cy="${30 - 9}" rx="6" ry="10" fill="${c}" transform="rotate(${a} 30 30)" opacity=".92"/>`; }
-  const vb = `0 0 60 ${h + 30}`;
-  return `<svg viewBox="${vb}" style="height:${big ? 150 : Math.min(140, h + 20)}px" aria-label="${W[mood].name} flower"><g class="grow" style="animation-delay:${i * 90}ms"><g class="sway" style="animation-delay:${-i * 0.7}s"><path d="M30 ${h + 30} C 28 ${h - 10}, 33 ${h / 2 + 20}, 30 40" stroke="#5fb38f" stroke-width="3" fill="none"/><path d="M30 ${h / 2 + 40} c -10 -2 -14 -9 -14 -14 c 8 0 13 5 14 14Z" fill="#7fcca9"/><g transform="translate(0 10)">${p}<circle cx="30" cy="30" r="6.5" fill="#fff3c4"/><circle cx="30" cy="30" r="3" fill="#ffb347"/></g></g></g></svg>`;
+/* ---------- art ---------- */
+function logo(size = 38, spin = false) {
+  let p = ""; for (let k = 0; k < 8; k++) p += `<path d="M50 50 C 44 38 44 26 50 16 C 56 26 56 38 50 50Z" fill="${k % 2 ? "#f4a623" : "#d9673f"}" transform="rotate(${k * 45} 50 50)"/>`;
+  let dots = ""; for (let k = 0; k < 16; k++) { const a = (k * 22.5 * Math.PI) / 180; dots += `<circle cx="${(50 + 44 * Math.cos(a)).toFixed(1)}" cy="${(50 + 44 * Math.sin(a)).toFixed(1)}" r="2.4" fill="#127475"/>`; }
+  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true"><g class="${spin ? "spin" : ""}">${dots}<circle cx="50" cy="50" r="38" fill="none" stroke="#c2334d" stroke-width="2" stroke-dasharray="2 5"/>${p}</g><circle cx="50" cy="50" r="10" fill="#ffcf4a"/><circle cx="50" cy="50" r="4.5" fill="#c2334d"/></svg>`;
 }
-function sprout() { return `<svg viewBox="0 0 60 60" style="height:46px" aria-label="empty day"><path d="M30 58V44" stroke="#9cc9b4" stroke-width="2.5" stroke-linecap="round"/><path d="M30 46c-6 0-9-4-9-8 5 0 9 3 9 8Zm0 0c6 0 9-4 9-8-5 0-9 3-9 8Z" fill="#b6dcc9" opacity=".8"/></svg>`; }
+function diyaIcon(lit = true) { return `<svg viewBox="0 0 20 28" aria-hidden="true">${lit ? `<path d="M10 3c3 4 3 7 0 9-3-2-3-5 0-9Z" fill="#ffb02e"/><path d="M10 6c1.4 2 1.4 3.6 0 5-1.4-1.4-1.4-3 0-5Z" fill="#fff1b8"/>` : ""}<path d="M1 15h18c-1 6-5 9-9 9s-8-3-9-9Z" fill="${lit ? "#d9673f" : "#b9a89a"}"/><path d="M1 15h18" stroke="${lit ? "#a9472a" : "#9b8c80"}" stroke-width="1.6"/></svg>`; }
+const I = {
+  today: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>`,
+  rangoli: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 12c-2-3-2-6 0-9 2 3 2 6 0 9Zm0 0c2 3 2 6 0 9-2-3-2-6 0-9Zm0 0c3-2 6-2 9 0-3 2-6 2-9 0Zm0 0c-3 2-6 2-9 0 3-2 6-2 9 0Z"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>`,
+  diya: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5c2.4 3 2.4 5.5 0 7.5-2.4-2-2.4-4.5 0-7.5Z"/><path d="M2.5 13h19c-1 5-5 8-9.5 8s-8.5-3-9.5-8Z"/></svg>`,
+  gullak: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h8M9.5 5v2C5.5 8.5 4 11.5 4 14.5 4 18.5 7.5 21 12 21s8-2.5 8-6.5c0-3-1.5-6-5.5-7.5V5"/><path d="M10 12h4"/></svg>`,
+  me: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>`,
+};
+function toranSvg() {
+  const W = 400, n = 13; let s = `<path d="M0 6 Q ${W / 2} 22 ${W} 6" stroke="#a9472a" stroke-width="2" fill="none"/>`;
+  for (let i = 0; i < n; i++) {
+    const x = 10 + (i * (W - 20)) / (n - 1), y = 6 + 8 * (1 - ((x - W / 2) / (W / 2)) ** 2);
+    const g = `class="swing" style="animation-delay:${(-i * 0.4).toFixed(1)}s;transform-origin:${x.toFixed(1)}px ${y.toFixed(1)}px"`;
+    if (i % 2) s += `<g ${g}><path d="M${x} ${y} q 7 14 0 30 q -7 -16 0 -30Z" fill="#5d8a3a"/><path d="M${x} ${y + 2} v26" stroke="#3f6b25" stroke-width=".8"/></g>`;
+    else s += `<g ${g}><line x1="${x}" y1="${y}" x2="${x}" y2="${y + 14}" stroke="#a9472a" stroke-width="1.2"/><circle cx="${x}" cy="${y + 20}" r="7" fill="${i % 4 ? "#f4a623" : "#ffcf4a"}"/><circle cx="${x}" cy="${y + 20}" r="3.6" fill="${i % 4 ? "#e8891a" : "#f4a623"}"/></g>`;
+  }
+  return `<svg viewBox="0 0 ${W} 58" preserveAspectRatio="none" aria-hidden="true">${s}</svg>`;
+}
 
 /* ---------- router ---------- */
-const TABS = [["today", "Today"], ["garden", "Garden"], ["breathe", "Breathe"], ["jar", "Jar"], ["me", "Me"]];
+const TABS = [["today", "Aaj", "Today"], ["rangoli", "Rangoli", "Mood"], ["diya", "Diya", "Breathe"], ["gullak", "Gullak", "Good"], ["me", "Main", "Me"]];
 let current = "today", breathTimer = null;
 function renderTabs() {
   const n = $("#tabs"); n.hidden = !S.name;
-  n.innerHTML = TABS.map(([id, l]) => `<button class="tab" role="tab" aria-selected="${id === current}" data-tab="${id}">${I[id]}<span>${l}</span></button>`).join("");
+  n.innerHTML = TABS.map(([id, l, s]) => `<button class="tab" role="tab" aria-selected="${id === current}" data-tab="${id}" aria-label="${l}, ${s}">${I[id]}<span>${l}</span><small>${s}</small></button>`).join("");
 }
 $("#tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) go(b.dataset.tab); });
-function go(tab) { current = tab; stopBreath(); location.hash = tab; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
-function header() { return `<header class="top"><div class="brand">${I.logo}<span>Sukoon</span></div><span class="chip-date">${fmtDate(new Date(), { weekday: "short", day: "numeric", month: "short" })}</span></header>`; }
-const credit = () => `<p class="credit">made with <span class="heart">♥</span> by <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">Madhuri</a></p>`;
+function go(tab) { current = tab; stopBreath(); location.hash = tab; render(); window.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" }); }
+const header = () => `<div class="toran">${toranSvg()}</div><header class="top"><div class="brand">${logo(38)}<div><b>Sukoon</b><small>सुकून · PEACE OF MIND</small></div></div><span class="chip-date">${fmt(new Date(), { weekday: "short", day: "numeric", month: "short" })}</span></header>`;
+const credit = () => `<p class="credit">made with <span class="heart">♥</span> by <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">Madhuri</a><span class="hi">प्यार से बनाया</span></p>`;
 function render() {
   applySky(); renderTabs();
   const app = $("#app");
-  if (!S.name) { app.innerHTML = viewWelcome(); bindWelcome(); return; }
-  const v = { today: viewToday, garden: viewGarden, breathe: viewBreathe, jar: viewJar, me: viewMe }[current] || viewToday;
-  app.innerHTML = `${header()}<section class="view">${v()}</section>${credit()}`;
-  ({ today: bindToday, garden: () => {}, breathe: bindBreathe, jar: bindJar, me: bindMe }[current] || (() => {}))();
+  if (!S.name) { app.innerHTML = `<div class="toran">${toranSvg()}</div>` + viewWelcome(); bindWelcome(); return; }
+  const V = { today: [viewToday, bindToday], rangoli: [viewRangoli, () => {}], diya: [viewDiya, bindDiya], gullak: [viewGullak, bindGullak], me: [viewMe, bindMe] }[current] || [viewToday, bindToday];
+  app.innerHTML = `${header()}<section class="view">${V[0]()}</section>${credit()}`; V[1]();
 }
 
 /* ---------- welcome ---------- */
 function viewWelcome() {
   return `<section class="welcome view">
-    <div class="logo">${I.logo}</div>
-    <div><p class="k">welcome to</p><h1>Sukoon</h1><p class="sub">A calm little corner for your day.<br>Name your inner weather, grow a garden, breathe.</p></div>
-    <div class="card" style="text-align:left">
-      <label class="k" for="nameIn">What should I call you?</label>
+    <div class="logo">${logo(150, true)}</div>
+    <div><h1>Sukoon<span class="hi">सुकून</span></h1><p class="sub">A calm daily ritual with an Indian soul.<br>Grow a rangoli, one petal a day.</p></div>
+    <div class="card border-motif" style="text-align:left">
+      <label class="k" for="nameIn">What should I call you? <span class="hi">आपका नाम?</span></label>
       <input id="nameIn" type="text" maxlength="24" placeholder="Your name" autocomplete="given-name" class="mt">
-      <button class="btn wide mt" id="startBtn" disabled>Begin ✿</button>
-      <p class="small mt" style="text-align:center">🔒 No account, no tracking. Everything stays on this device.</p>
-    </div>
-    ${credit()}
-  </section>`;
+      <button class="btn wide mt" id="startBtn" disabled>Shuru karein ✿</button>
+      <p class="small mt" style="text-align:center">🔒 No account, no tracking. Everything stays on this phone.</p>
+    </div>${credit()}</section>`;
 }
 function bindWelcome() {
   const i = $("#nameIn"), b = $("#startBtn");
   i.addEventListener("input", () => (b.disabled = !i.value.trim()));
-  const go2 = () => { if (!i.value.trim()) return; S.name = i.value.trim(); save(); petals(["#ffb38a", "#ff8fab", "#b9a7ff", "#8fe0c4", "#ffd166"]); render(); };
-  b.addEventListener("click", go2); i.addEventListener("keydown", (e) => e.key === "Enter" && go2());
+  const start = () => { if (!i.value.trim()) return; S.name = i.value.trim(); save(); petals(["#f4a623", "#e0457b", "#ffcf4a", "#d9673f", "#127475"]); render(); };
+  b.addEventListener("click", start); i.addEventListener("keydown", (e) => e.key === "Enter" && start());
   setTimeout(() => i.focus(), 300);
 }
 
-/* ---------- today ---------- */
+/* ---------- aaj (today) ---------- */
 let draft = { mood: 0, tags: [], note: "" }, editing = false;
 function viewToday() {
-  const c = S.checkins[dkey()];
-  const kindIdx = KIND.indexOf(dayIndex(KIND)); const kindDone = S.kind[dkey()];
-  const top = `<h1>${greeting()},<br>${esc(S.name)} <span aria-hidden="true">☁︎</span></h1><p class="sub">${c && !editing ? "Thanks for checking in today." : "How's your inner weather today?"}</p>`;
-  let checkin;
+  const c = S.checkins[dkey()], [g, gHi] = greeting(), kindTxt = pickToday(KIND), kindDone = S.kind[dkey()], [th, thHi] = pickToday(THOUGHTS);
+  const top = `<h1>${g}, ${esc(S.name)}</h1><p class="sub"><span class="hi">${gHi}</span> · ${c && !editing ? "Thank you for checking in today." : "How is your <b>mann ka mausam</b> today?"}</p>`;
+  let box;
   if (c && !editing) {
-    checkin = `<div class="card"><div class="today-done">${wIcon(c.mood, 64)}<div><p class="k">today · ${W[c.mood].name}</p><p class="quote" style="font-size:1.02rem">${W[c.mood].line}</p></div></div>
+    box = `<div class="card border-motif"><div class="done-head">${mIcon(c.mood, 62)}<div><p class="k">today · ${M[c.mood].en} <span class="hi">${M[c.mood].hi}</span></p><p class="quote" style="font-size:1.05rem">${M[c.mood].line}</p></div></div>
       ${c.tags?.length ? `<div class="tags">${c.tags.map((t) => `<span class="tag" aria-pressed="true">${esc(t)}</span>`).join("")}</div>` : ""}
       ${c.note ? `<p class="small mt" style="white-space:pre-wrap">“${esc(c.note)}”</p>` : ""}
-      <div class="row mt"><button class="btn soft" id="editBtn">Edit check-in</button><button class="btn soft" data-go="garden">See garden ✿</button></div></div>`;
+      <div class="row mt"><button class="btn soft" id="editBtn">Edit</button><button class="btn indigo" data-go="rangoli">See today's petal ✿</button></div></div>`;
   } else {
     if (c && editing && !draft.mood) draft = { mood: c.mood, tags: [...(c.tags || [])], note: c.note || "" };
-    checkin = `<div class="card"><div class="weathers" role="radiogroup" aria-label="Inner weather">${W.slice(1).map((w) => `<button class="wbtn" style="--wc:${w.c}" role="radio" aria-pressed="${draft.mood === w.id}" aria-checked="${draft.mood === w.id}" data-mood="${w.id}">${wIcon(w.id)}<span>${w.name}</span></button>`).join("")}</div>
-      <p class="small mt" id="wline" style="min-height:1.3em">${draft.mood ? W[draft.mood].line : "Tap the one that feels closest. There's no wrong answer."}</p>
+    box = `<div class="card border-motif"><p class="k">mann ka mausam <span class="hi">मन का मौसम</span></p>
+      <div class="moods mt" role="radiogroup" aria-label="Mood">${M.slice(1).map((m) => `<button class="mbtn" style="--mc:${m.c}" role="radio" aria-checked="${draft.mood === m.id}" aria-pressed="${draft.mood === m.id}" data-mood="${m.id}">${mIcon(m.id)}<b>${m.en}</b><span>${m.hi}</span></button>`).join("")}</div>
+      <p class="small mt" id="mline" style="min-height:1.4em">${draft.mood ? `${M[draft.mood].line} <span class="hi">${M[draft.mood].lineHi}</span>` : "Tap the one that feels closest. There is no wrong answer."}</p>
       <p class="k mt">what's shaping it?</p><div class="tags">${TAGS.map((t) => `<button class="tag" aria-pressed="${draft.tags.includes(t)}" data-tag="${t}">${t}</button>`).join("")}</div>
-      <textarea id="note" rows="3" class="mt" maxlength="500" placeholder="Anything you'd like to remember about today? (optional)">${esc(draft.note)}</textarea>
-      <button class="btn wide mt" id="saveBtn" ${draft.mood ? "" : "disabled"}>${c ? "Update" : "Plant today's flower"} ✿</button></div>`;
+      <textarea id="note" rows="3" class="mt" maxlength="500" placeholder="Kuch kehna hai? Anything to remember about today… (optional)">${esc(draft.note)}</textarea>
+      <button class="btn wide mt" id="saveBtn" ${draft.mood ? "" : "disabled"}>${c ? "Update" : "Add today's petal"} ✿</button></div>`;
   }
-  const st = streak();
-  return `${top}${checkin}
-    <div class="card"><div class="minis"><div class="mini"><b>${st}</b><span>day streak</span></div><div class="mini"><b>${S.gratitude.length}</b><span>in your jar</span></div><div class="mini"><b>${S.breaths}</b><span>calm breaths</span></div></div></div>
-    <div class="card"><div class="card-h"><p class="k">today's small kindness</p><span class="small">${Object.keys(S.kind).length} done so far</span></div>
-      <p style="font-weight:700;font-size:1.02rem">${KIND[kindIdx]}</p>
-      <button class="btn ${kindDone ? "soft" : ""} mt" id="kindBtn">${kindDone ? "Done today ✓" : "I did it ♥"}</button></div>
-    <div class="card"><p class="k">a thought for today</p><p class="quote mt">${dayIndex(AFFIRM)}</p></div>
-    <button class="card" data-go="breathe" style="width:100%;text-align:left;display:flex;align-items:center;gap:14px"><span style="width:52px;height:52px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff,var(--mint) 45%,#8d78e0)"></span><span><b style="font-size:1.02rem">Take a one-minute breath</b><br><span class="small">Feeling tight? Let's slow down together.</span></span></button>`;
+  const st = streak(), lit = Math.min(st, 7);
+  return `${top}${box}
+    <div class="card"><div class="minis"><div class="mini"><div class="diyas">${[...Array(7)].map((_, i) => diyaIcon(i < lit)).join("")}</div><b>${st}</b><span>day streak</span></div><div class="mini"><b>${S.gratitude.length}</b><span>coins in gullak</span></div><div class="mini"><b>${S.breaths}</b><span>calm breaths</span></div></div></div>
+    <div class="card"><div class="card-h"><p class="k">aaj ki chhoti neki <span class="hi">आज की नेकी</span></p><span class="small">${Object.keys(S.kind).length} done</span></div>
+      <p style="font-weight:700;font-size:1.06rem;line-height:1.4">${kindTxt}</p>
+      <button class="btn ${kindDone ? "soft" : "indigo"} mt" id="kindBtn">${kindDone ? "Ho gaya ✓" : "I did it ♥"}</button></div>
+    <div class="card" style="text-align:center"><p class="k">aaj ka vichaar <span class="hi">आज का विचार</span></p><p class="quote mt">${th}<span class="hi">${thHi}</span></p></div>
+    <button class="card" data-go="diya" style="width:100%;text-align:left;display:flex;align-items:center;gap:14px"><span style="width:40px;height:56px;flex:none">${diyaIcon(true)}</span><span><b style="font-size:1.06rem">Light the diya, breathe for a minute</b><br><span class="small">Feeling tight? Let's slow down together.</span></span></button>`;
 }
 function bindToday() {
   $$("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
   $("#editBtn")?.addEventListener("click", () => { editing = true; draft = { mood: 0, tags: [], note: "" }; render(); });
   $$("[data-mood]").forEach((b) => b.addEventListener("click", () => {
     draft.mood = +b.dataset.mood; $$("[data-mood]").forEach((x) => { x.setAttribute("aria-pressed", x === b); x.setAttribute("aria-checked", x === b); });
-    $("#wline").textContent = W[draft.mood].line; $("#saveBtn").disabled = false; chime(440 + draft.mood * 70, 0.9);
+    $("#mline").innerHTML = `${M[draft.mood].line} <span class="hi">${M[draft.mood].lineHi}</span>`; $("#saveBtn").disabled = false; bell(392 + draft.mood * 40, 1.2);
   }));
   $$("[data-tag]").forEach((b) => b.addEventListener("click", () => { const t = b.dataset.tag; draft.tags = draft.tags.includes(t) ? draft.tags.filter((x) => x !== t) : [...draft.tags, t]; b.setAttribute("aria-pressed", draft.tags.includes(t)); }));
   $("#note")?.addEventListener("input", (e) => (draft.note = e.target.value));
   $("#saveBtn")?.addEventListener("click", () => {
     const first = !S.checkins[dkey()];
     S.checkins[dkey()] = { mood: draft.mood, tags: draft.tags, note: draft.note.trim(), t: Date.now() }; save();
-    petals([W[draft.mood].c, "#fff3c4", "#8fe0c4"]); chime(784, 1.8);
-    toast(first ? "A new flower is growing in your garden ✿" : "Check-in updated");
+    petals([M[draft.mood].c, "#f4a623", "#ffcf4a", "#e0457b"]); bell(523, 2.6);
+    toast(first ? "A new petal joined your rangoli ✿" : "Updated");
     draft = { mood: 0, tags: [], note: "" }; editing = false; render();
   });
-  $("#kindBtn")?.addEventListener("click", () => { if (S.kind[dkey()]) { delete S.kind[dkey()]; } else { S.kind[dkey()] = 1; petals(["#ff8fab", "#ffd166"]); chime(880, 1.2); toast("That was kind. The world is a little softer ♥"); } save(); render(); });
+  $("#kindBtn")?.addEventListener("click", () => { if (S.kind[dkey()]) delete S.kind[dkey()]; else { S.kind[dkey()] = 1; petals(["#e0457b", "#f4a623"]); bell(659, 1.8); toast("Bahut accha! The world feels a little softer ♥"); } save(); render(); });
 }
 
-/* ---------- garden ---------- */
-function viewGarden() {
-  const today = new Date(), dow = (today.getDay() + 6) % 7, monday = addDays(today, -dow);
-  const days = [...Array(7)].map((_, i) => addDays(monday, i));
-  const bed = days.map((d, i) => { const c = S.checkins[dkey(d)]; const isT = dkey(d) === dkey(); return `<div class="plot ${isT ? "today" : ""}">${c ? flower(c.mood, i) : d > today ? "" : sprout()}<span class="d">${d.toLocaleDateString("en-IN", { weekday: "narrow" })}</span></div>`; }).join("");
-  const weekCount = days.filter((d) => S.checkins[dkey(d)]).length;
-  // 35-day grid aligned to weeks
-  const start = addDays(monday, -28); let heat = "";
-  for (let i = 0; i < 35; i++) { const d = addDays(start, i), c = S.checkins[dkey(d)]; heat += `<i title="${fmtDate(d, { day: "numeric", month: "short" })}${c ? " · " + W[c.mood].name : ""}" style="${c ? `background:${W[c.mood].c}` : d > today ? "opacity:.35" : ""}" ${dkey(d) === dkey() ? "data-today" : ""}></i>`; }
-  // 30-day chart
-  const pts = []; for (let i = 29; i >= 0; i--) { const d = addDays(today, -i), c = S.checkins[dkey(d)]; pts.push(c ? c.mood : null); }
-  const X = (i) => 10 + (i / 29) * 300, Y = (m) => 130 - (m - 1) * 28;
-  let path = "", dots = ""; pts.forEach((m, i) => { if (m == null) return; path += `${path ? "L" : "M"}${X(i).toFixed(1)} ${Y(m)} `; dots += `<circle cx="${X(i).toFixed(1)}" cy="${Y(m)}" r="4" fill="${W[m].c}" stroke="#fff" stroke-width="1.5"/>`; });
+/* ---------- rangoli ---------- */
+function rangoliSvg() {
+  const today = new Date(), cx = 170, cy = 170, rings = [[58, 106], [106, 140], [140, 166]];
+  let out = "", ring = "";
+  for (let r = 0; r < 3; r++) { const R = [50, 100, 136][r] + 0, n = [16, 30, 40][r]; for (let k = 0; k < n; k++) { const a = (k / n) * 2 * Math.PI; ring += `<circle cx="${(cx + R * Math.cos(a)).toFixed(1)}" cy="${(cy + R * Math.sin(a)).toFixed(1)}" r="1.6" fill="currentColor" opacity=".25"/>`; } }
+  out += `<g class="spin">${ring}</g>`;
+  for (let i = 0; i < 30; i++) {
+    const d = addDays(today, -(29 - i)), c = S.checkins[dkey(d)], ri = Math.floor(i / 10), [r0, r1] = rings[ri], ang = (i % 10) * 36 + ri * 18 - 90;
+    const w = Math.min(22, (r1 - r0) * 0.55 + 4), mid = (r0 + r1) / 2;
+    const path = `M ${r0} 0 C ${mid} ${-w}, ${r1} ${(-w * 0.35).toFixed(1)}, ${r1} 0 C ${r1} ${(w * 0.35).toFixed(1)}, ${mid} ${w}, ${r0} 0 Z`;
+    const isToday = dkey(d) === dkey();
+    out += `<g transform="translate(${cx} ${cy}) rotate(${ang})"><title>${fmt(d)}${c ? " · " + M[c.mood].en : ""}</title>${c
+      ? `<path class="petal" style="animation-delay:${i * 35}ms" d="${path}" fill="${M[c.mood].c}" stroke="#fffaf1" stroke-width="2"/><path d="M ${r0 + 6} 0 L ${r1 - 8} 0" stroke="#fffaf1" stroke-width="1.2" stroke-dasharray="1.5 3" opacity=".9"/>`
+      : `<path d="${path}" fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2 4" opacity=".35"/>`}${isToday ? `<circle cx="${r1 + 7}" cy="0" r="3.5" fill="#c2334d"/>` : ""}</g>`;
+  }
+  const tc = S.checkins[dkey()] ? M[S.checkins[dkey()].mood].c : "#f4a623";
+  let lotus = ""; for (let k = 0; k < 8; k++) lotus += `<path d="M0 0 C -9 -14 -9 -30 0 -44 C 9 -30 9 -14 0 0Z" fill="${k % 2 ? tc : "#ffcf4a"}" transform="rotate(${k * 45})" opacity=".95"/>`;
+  out += `<g transform="translate(${cx} ${cy})">${lotus}<circle r="13" fill="#c2334d"/><circle r="6" fill="#ffcf4a"/></g>`;
+  return `<svg class="rangoli" viewBox="0 0 340 340" role="img" aria-label="Rangoli of your last 30 days">${out}</svg>`;
+}
+function toranWeek() {
+  const today = new Date(), dow = (today.getDay() + 6) % 7, mon = addDays(today, -dow); let s = `<path d="M6 14 Q 200 44 394 14" stroke="#a9472a" stroke-width="2.2" fill="none"/>`;
+  for (let i = 0; i < 7; i++) {
+    const d = addDays(mon, i), c = S.checkins[dkey(d)], x = 30 + i * 56.6, y = 14 + 15 * (1 - ((x - 200) / 194) ** 2), L = 26 + (i % 2) * 12;
+    s += `<g class="swing" style="animation-delay:${-i * 0.5}s;transform-origin:${x.toFixed(1)}px ${y.toFixed(1)}px"><line x1="${x}" y1="${y}" x2="${x}" y2="${y + L}" stroke="#a9472a" stroke-width="1.3"/>`;
+    if (c) { let f = ""; for (let k = 0; k < 10; k++) f += `<ellipse rx="4" ry="9" cy="-8" fill="${M[c.mood].c}" transform="rotate(${k * 36})"/>`; s += `<g transform="translate(${x} ${y + L + 14})">${f}<circle r="5" fill="#ffcf4a"/></g>`; }
+    else s += `<path d="M${x} ${y + L} q 9 14 0 28 q -9 -14 0 -28Z" fill="${d > today ? "#cfc4b8" : "#5d8a3a"}" opacity="${d > today ? 0.5 : 0.85}"/>`;
+    s += `</g><text x="${x}" y="118" text-anchor="middle" font-size="11" font-weight="800" fill="currentColor" opacity="${dkey(d) === dkey() ? 1 : 0.5}">${d.toLocaleDateString("en-IN", { weekday: "short" })}</text>`;
+  }
+  return `<svg class="toran-week" viewBox="0 0 400 124" role="img" aria-label="This week">${s}</svg>`;
+}
+function viewRangoli() {
+  const total = Object.keys(S.checkins).length, last30 = [...Array(30)].filter((_, i) => S.checkins[dkey(addDays(new Date(), -i))]).length;
   const counts = [0, 0, 0, 0, 0, 0]; Object.values(S.checkins).forEach((c) => counts[c.mood]++);
-  const total = Object.keys(S.checkins).length, top = total ? counts.indexOf(Math.max(...counts.slice(1)), 1) : 0;
-  const tagCount = {}; Object.values(S.checkins).forEach((c) => (c.tags || []).forEach((t) => (tagCount[t] = (tagCount[t] || 0) + 1)));
-  const topTags = Object.entries(tagCount).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([t]) => t);
-  return `<h1>Your garden</h1><p class="sub">Every check-in plants a flower. Its colour is the weather you felt.</p>
-    <div class="card"><div class="card-h"><p class="k">this week</p><span class="small">${weekCount}/7 flowers</span></div><div class="bed">${bed}</div></div>
-    <div class="card"><div class="minis"><div class="mini"><b>${streak()}</b><span>day streak</span></div><div class="mini"><b>${total}</b><span>check-ins</span></div><div class="mini" style="padding:8px">${top ? wIcon(top, 34) : "<b>–</b>"}<span>${top ? "often " + W[top].name.toLowerCase() : "most often"}</span></div></div>
-      ${topTags.length ? `<p class="small mt">Most mentioned: <b>${topTags.map(esc).join(", ")}</b></p>` : ""}</div>
-    <div class="card"><p class="k">last 5 weeks</p><div class="heat mt">${heat}</div>
-      <div class="legend">${W.slice(1).map((w) => `<span><i style="background:${w.c}"></i>${w.name}</span>`).join("")}</div></div>
-    <div class="card"><p class="k">30-day weather line</p>
-      ${path ? `<svg class="chart mt" viewBox="0 0 320 150" role="img" aria-label="Mood over 30 days">${[1, 2, 3, 4, 5].map((m) => `<line x1="10" x2="310" y1="${Y(m)}" y2="${Y(m)}" stroke="currentColor" opacity=".08"/>`).join("")}<path d="${path}" fill="none" stroke="url(#gl)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#b9a7ff"/><stop offset="1" stop-color="#ff8fab"/></linearGradient></defs>${dots}</svg>` : `<p class="small mt">Your line appears after your first check-in.</p>`}</div>`;
+  const top = total ? counts.indexOf(Math.max(...counts.slice(1)), 1) : 0;
+  const tc = {}; Object.values(S.checkins).forEach((c) => (c.tags || []).forEach((t) => (tc[t] = (tc[t] || 0) + 1)));
+  const topTags = Object.entries(tc).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([t]) => t);
+  const pts = []; for (let i = 29; i >= 0; i--) { const c = S.checkins[dkey(addDays(new Date(), -i))]; pts.push(c ? c.mood : null); }
+  const X = (i) => 12 + (i / 29) * 296, Y = (m) => 122 - (m - 1) * 26; let path = "", dots = "";
+  pts.forEach((m, i) => { if (m == null) return; path += `${path ? "L" : "M"}${X(i).toFixed(1)} ${Y(m)} `; dots += `<circle cx="${X(i).toFixed(1)}" cy="${Y(m)}" r="4.2" fill="${M[m].c}" stroke="#fffaf1" stroke-width="1.5"/>`; });
+  return `<h1>Your rangoli</h1><p class="sub">Every check-in adds one petal in the colour of your mood. Thirty days make one full rangoli. <span class="hi">एक दिन, एक पंखुड़ी।</span></p>
+    <div class="card border-motif"><div class="card-h"><p class="k">last 30 days</p><span class="small">${last30}/30 petals</span></div><div class="rangoli-wrap">${rangoliSvg()}</div>
+      <div class="legend">${M.slice(1).map((m) => `<span><i style="background:${m.c}"></i>${m.en}</span>`).join("")}</div></div>
+    <div class="card"><div class="card-h"><p class="k">this week's toran <span class="hi">तोरण</span></p></div>${toranWeek()}</div>
+    <div class="card"><div class="minis"><div class="mini"><b>${streak()}</b><span>day streak</span></div><div class="mini"><b>${total}</b><span>check-ins</span></div><div class="mini" style="padding:8px 4px">${top ? mIcon(top, 32) : "<b>–</b>"}<span>${top ? "mostly " + M[top].en.toLowerCase() : "most often"}</span></div></div>
+      ${topTags.length ? `<p class="small mt">What shapes your days most: <b>${topTags.map(esc).join(", ")}</b></p>` : ""}</div>
+    <div class="card"><p class="k">30-day mood wave</p>${path ? `<svg class="chart mt" viewBox="0 0 320 140" role="img" aria-label="Mood over 30 days">${[1, 2, 3, 4, 5].map((m) => `<line x1="12" x2="308" y1="${Y(m)}" y2="${Y(m)}" stroke="currentColor" opacity=".08" stroke-dasharray="3 4"/>`).join("")}<path d="${path}" fill="none" stroke="#d9673f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>${dots}</svg>` : `<p class="small mt">Your wave appears after your first check-in.</p>`}</div>`;
 }
 
-/* ---------- breathe ---------- */
-const PATTERNS = { calm: { name: "Calm", steps: [["Breathe in", 4], ["Hold", 2], ["Breathe out", 6]] }, box: { name: "Box", steps: [["Breathe in", 4], ["Hold", 4], ["Breathe out", 4], ["Hold", 4]] }, sleep: { name: "Sleep 4-7-8", steps: [["Breathe in", 4], ["Hold", 7], ["Breathe out", 8]] } };
-let pattern = "calm", cycles = 0;
-function viewBreathe() {
-  return `<h1>Breathe</h1><p class="sub">Follow the circle. Three slow rounds is enough to feel the shift.</p>
-    <div class="card"><div class="patterns">${Object.entries(PATTERNS).map(([k, p]) => `<button class="pbtn" aria-pressed="${k === pattern}" data-p="${k}">${p.name}</button>`).join("")}</div>
-      <div class="breath-stage"><div class="ring"></div><div class="orb" id="orb"></div><div class="breath-text"><b id="bt">Ready?</b><span id="bc">${PATTERNS[pattern].steps.map((s) => s[1]).join(" · ")}</span></div></div>
-      <button class="btn wide" id="bBtn">Start</button><p class="small mt" style="text-align:center" id="bInfo">${S.breaths} calm breaths so far</p></div>`;
+/* ---------- diya (breathe) ---------- */
+const PATTERNS = { shaant: { name: "Shaant · 4-2-6", steps: [["Breathe in", 4], ["Hold", 2], ["Breathe out", 6]] }, sama: { name: "Sama vritti · 4-4-4-4", steps: [["Breathe in", 4], ["Hold", 4], ["Breathe out", 4], ["Hold", 4]] }, neend: { name: "Neend · 4-7-8", steps: [["Breathe in", 4], ["Hold", 7], ["Breathe out", 8]] } };
+let pattern = "shaant", cycles = 0;
+function viewDiya() {
+  return `<h1>Light the diya</h1><p class="sub">Breathe in and the flame rises. Breathe out and it settles. Three slow rounds is enough. <span class="hi">सांस लो, सुकून पाओ।</span></p>
+    <div class="card border-motif"><div class="patterns">${Object.entries(PATTERNS).map(([k, p]) => `<button class="pbtn" aria-pressed="${k === pattern}" data-p="${k}">${p.name}</button>`).join("")}</div>
+      <div class="diya-stage"><div class="halo" id="halo"></div>
+        <svg class="diya-svg" viewBox="0 0 200 220" aria-hidden="true">
+          <g class="flame" id="flame"><g class="flicker"><path d="M100 30 C 128 70 126 102 100 118 C 74 102 72 70 100 30Z" fill="#ffae2b"/><path d="M100 58 C 114 82 113 100 100 110 C 87 100 86 82 100 58Z" fill="#ffe7a1"/><path d="M100 84 C 106 94 105 102 100 106 C 95 102 94 94 100 84Z" fill="#fff"/></g></g>
+          <path d="M98 112h4v14h-4z" fill="#3b2a1a"/>
+          <path d="M18 128 C 30 120 170 120 182 128 C 176 168 140 186 100 186 C 60 186 24 168 18 128Z" fill="#d9673f"/>
+          <path d="M18 128 C 30 136 170 136 182 128" stroke="#a9472a" stroke-width="4" fill="none"/>
+          <path d="M40 150 q 15 10 30 0 q 15 10 30 0 q 15 10 30 0 q 15 10 30 0" stroke="#ffcf4a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <g fill="#fff1d6">${[...Array(7)].map((_, k) => `<circle cx="${52 + k * 16}" cy="168" r="2.4"/>`).join("")}</g>
+          <ellipse cx="100" cy="196" rx="70" ry="7" fill="#000" opacity=".12"/>
+        </svg>
+        <div class="breath-text"><b id="bt">Ready?</b><span id="bc">${PATTERNS[pattern].steps.map((s) => s[1]).join(" · ")}</span></div></div>
+      <button class="btn wide indigo" id="bBtn">Start</button><p class="small mt" style="text-align:center" id="bInfo">${S.breaths} calm breaths so far</p></div>`;
 }
-function bindBreathe() {
+function bindDiya() {
   $$("[data-p]").forEach((b) => b.addEventListener("click", () => { pattern = b.dataset.p; stopBreath(); render(); }));
   $("#bBtn").addEventListener("click", () => (breathTimer ? (stopBreath(), render()) : startBreath()));
+  $("#flame").style.transform = "scale(.75)"; $("#halo").style.transform = "scale(.85)";
 }
 function startBreath() {
-  const steps = PATTERNS[pattern].steps, orb = $("#orb"); let i = 0; cycles = 0; $("#bBtn").textContent = "Stop";
+  const steps = PATTERNS[pattern].steps, fl = $("#flame"), ha = $("#halo"); let i = 0; cycles = 0; $("#bBtn").textContent = "Stop";
   const run = () => {
     const [label, sec] = steps[i]; $("#bt").textContent = label; let left = sec; $("#bc").textContent = left;
-    orb.style.transitionDuration = sec + "s"; if (label === "Breathe in") { orb.style.transform = "scale(1.9)"; chime(523, 0.8); } else if (label === "Breathe out") { orb.style.transform = "scale(1)"; chime(392, 0.8); }
+    fl.style.transitionDuration = ha.style.transitionDuration = sec + "s";
+    if (label === "Breathe in") { fl.style.transform = "scale(1.25)"; ha.style.transform = "scale(1.9)"; bell(440, 1); } else if (label === "Breathe out") { fl.style.transform = "scale(.75)"; ha.style.transform = "scale(.85)"; bell(330, 1); }
     const tick = setInterval(() => { left--; if ($("#bc")) $("#bc").textContent = left > 0 ? left : ""; if (left <= 0) clearInterval(tick); }, 1000);
-    breathTimer = setTimeout(() => { clearInterval(tick); i++; if (i >= steps.length) { i = 0; cycles++; S.breaths++; save(); if ($("#bInfo")) $("#bInfo").textContent = `${cycles} round${cycles > 1 ? "s" : ""} · ${S.breaths} calm breaths so far`; } if ($("#orb")) run(); }, sec * 1000);
+    breathTimer = setTimeout(() => { clearInterval(tick); i++; if (i >= steps.length) { i = 0; cycles++; S.breaths++; save(); if ($("#bInfo")) $("#bInfo").textContent = `${cycles} round${cycles > 1 ? "s" : ""} · ${S.breaths} calm breaths so far`; } if ($("#flame")) run(); }, sec * 1000);
     breathTimer.tick = tick;
   };
   run();
 }
-function stopBreath() { if (breathTimer) { clearTimeout(breathTimer); clearInterval(breathTimer.tick); breathTimer = null; if (cycles) toast(`${cycles} calm round${cycles > 1 ? "s" : ""}. Well done 🌿`); cycles = 0; } }
+function stopBreath() { if (breathTimer) { clearTimeout(breathTimer); clearInterval(breathTimer.tick); breathTimer = null; if (cycles) toast(`${cycles} calm round${cycles > 1 ? "s" : ""}. Shaabaash 🪔`); cycles = 0; } }
 
-/* ---------- jar & letters ---------- */
+/* ---------- gullak & chitthi ---------- */
 let letterDays = 30;
-function jarSvg(n) {
-  const cap = Math.min(n, 40); let orbs = "";
-  for (let k = 0; k < cap; k++) { const row = Math.floor(k / 6), col = k % 6; const x = 30 + col * 14 + (row % 2) * 7 + ((k * 37) % 5), y = 150 - row * 13 - ((k * 13) % 4); const c = ["#ffd166", "#ff8fab", "#b9a7ff", "#8fe0c4", "#ffb38a"][k % 5]; orbs += `<circle cx="${x}" cy="${y}" r="6" fill="${c}" opacity=".95"><animate attributeName="opacity" values=".95;.55;.95" dur="${2 + (k % 4)}s" repeatCount="indefinite"/></circle>`; }
-  return `<svg class="jar" viewBox="0 0 140 170" aria-label="${n} memories in the jar"><rect x="38" y="6" width="64" height="16" rx="5" fill="#d9b48f"/><path d="M42 22h56v10c14 8 22 20 22 36v76a20 20 0 0 1-20 20H40a20 20 0 0 1-20-20V68c0-16 8-28 22-36Z" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.9)" stroke-width="2.5"/><clipPath id="jc"><path d="M42 24h56v9c14 8 21 20 21 35v76a19 19 0 0 1-19 19H40a19 19 0 0 1-19-19V68c0-15 7-27 21-35Z"/></clipPath><g clip-path="url(#jc)">${orbs}</g><path d="M34 70c0-10 4-18 12-24" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7" fill="none"/></svg>`;
+function gullakSvg(n, drop = false) {
+  return `<svg class="gullak" viewBox="0 0 130 140" aria-label="${n} coins in your gullak">
+    ${drop ? `<g class="coin-drop"><circle cx="65" cy="22" r="10" fill="#ffcf4a" stroke="#c98a12" stroke-width="2"/><text x="65" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#a8700e">₹</text></g>` : ""}
+    <path d="M45 30h40v10 C 112 48 122 70 120 92 C 118 118 94 134 65 134 C 36 134 12 118 10 92 C 8 70 18 48 45 40Z" fill="#c8623a"/>
+    <path d="M45 30h40v10H45z" fill="#a9472a"/><rect x="52" y="44" width="26" height="5" rx="2.5" fill="#5a2412"/>
+    <path d="M18 84 q 47 18 94 0" stroke="#ffcf4a" stroke-width="3" fill="none"/><path d="M22 98 q 43 16 86 0" stroke="#fff1d6" stroke-width="2" fill="none" stroke-dasharray="2 5" stroke-linecap="round"/>
+    <path d="M30 60 q -6 14 0 30" stroke="#fff" stroke-width="5" opacity=".25" fill="none" stroke-linecap="round"/>
+    <text x="65" y="122" text-anchor="middle" font-family="Rozha One" font-size="18" fill="#fff1d6">${n}</text></svg>`;
 }
-function viewJar() {
-  const now = Date.now();
-  const letters = [...S.letters].sort((a, b) => a.openOn - b.openOn);
-  return `<h1>Little jar of good</h1><p class="sub">Drop in one good thing. On a heavy day, pull one out.</p>
-    <div class="card"><div class="jar-wrap">${jarSvg(S.gratitude.length)}<div><p class="k">${S.gratitude.length} memories</p>
-      <input id="gIn" type="text" maxlength="140" placeholder="Today I'm grateful for…" class="mt">
-      <div class="row mt"><button class="btn" id="gAdd">Add ✦</button><button class="btn soft" id="gPick" ${S.gratitude.length ? "" : "disabled"}>Pick one</button></div></div></div>
+function viewGullak() {
+  const now = Date.now(), letters = [...S.letters].sort((a, b) => a.openOn - b.openOn);
+  return `<h1>Gullak of good</h1><p class="sub">Drop in one good moment like a coin. On a heavy day, take one out. <span class="hi">अच्छे पलों की गुल्लक।</span></p>
+    <div class="card border-motif"><div class="gullak-wrap"><div id="gWrap">${gullakSvg(S.gratitude.length)}</div><div><p class="k">${S.gratitude.length} good moments</p>
+      <input id="gIn" type="text" maxlength="140" placeholder="Aaj accha laga jab…" class="mt">
+      <div class="row mt"><button class="btn" id="gAdd">Drop it in</button><button class="btn soft" id="gPick" ${S.gratitude.length ? "" : "disabled"}>Take one</button></div></div></div>
       <div id="gOut"></div></div>
-    <div class="card"><div class="card-h"><p class="k">letters to future me</p>${IENV()}</div>
-      <textarea id="lIn" rows="4" maxlength="1200" placeholder="Dear future me…"></textarea>
-      <p class="k mt">open in</p><div class="seg mt">${[[7, "1 week"], [30, "1 month"], [90, "3 months"], [365, "1 year"]].map(([d, l]) => `<button data-ld="${d}" aria-pressed="${d === letterDays}">${l}</button>`).join("")}</div>
-      <button class="btn wide mt" id="lSeal">Seal letter ✉</button>
-      ${letters.length ? `<ul class="letters">${letters.map((l) => { const open = now >= l.openOn; const days = Math.ceil((l.openOn - now) / 864e5); return `<li class="letter">${I.env(open)}<div class="meta"><b>${open ? "Ready to open" : "Sealed"}</b><span>Written ${fmtDate(new Date(l.t), { day: "numeric", month: "short", year: "numeric" })} · ${open ? "opened for you" : `opens in ${days} day${days > 1 ? "s" : ""}`}</span></div>${open ? `<button class="btn soft" data-open="${l.t}">Read</button>` : `<span aria-hidden="true">🔒</span>`}</li>`; }).join("")}</ul>` : ""}</div>`;
+    <div class="card"><div class="card-h"><p class="k">chitthi to future me <span class="hi">चिट्ठी</span></p><span class="small">${S.letters.length} posted</span></div>
+      <textarea id="lIn" rows="4" maxlength="1200" placeholder="Pyaare future me…"></textarea>
+      <p class="k mt">deliver in</p><div class="seg mt">${[[7, "1 week"], [30, "1 month"], [90, "3 months"], [365, "1 year"]].map(([d, l]) => `<button data-ld="${d}" aria-pressed="${d === letterDays}">${l}</button>`).join("")}</div>
+      <button class="btn wide indigo mt" id="lSeal">Seal &amp; post ✉</button>
+      ${letters.length ? `<ul class="letters">${letters.map((l) => { const open = now >= l.openOn, days = Math.ceil((l.openOn - now) / 864e5); return `<li class="inland"><div class="stamp"><div>सु</div></div><div class="meta"><b>${open ? "A chitthi has arrived!" : "In the post"}</b><span>Posted ${fmt(new Date(l.t), { day: "numeric", month: "short", year: "numeric" })} · ${open ? "ready to read" : `arrives in ${days} day${days > 1 ? "s" : ""}`}</span></div>${open ? `<button class="btn soft" data-open="${l.t}">Read</button>` : `<span class="seal" aria-label="sealed">सु</span>`}</li>`; }).join("")}</ul>` : ""}</div>`;
 }
-const IENV = () => `<span class="small">${S.letters.length} written</span>`;
-function bindJar() {
-  const add = () => { const v = $("#gIn").value.trim(); if (!v) return; S.gratitude.push({ text: v, t: Date.now() }); save(); petals(["#ffd166", "#ff8fab", "#b9a7ff"]); chime(988, 1.4); toast("Saved in your jar ✦"); render(); };
+function bindGullak() {
+  const add = () => { const v = $("#gIn").value.trim(); if (!v) return; S.gratitude.push({ text: v, t: Date.now() }); save(); $("#gWrap").innerHTML = gullakSvg(S.gratitude.length, true); bell(784, 1.6); toast("Clink! Saved in your gullak 🪙"); setTimeout(render, 850); };
   $("#gAdd").addEventListener("click", add); $("#gIn").addEventListener("keydown", (e) => e.key === "Enter" && add());
-  $("#gPick").addEventListener("click", () => { const g = S.gratitude[Math.floor(Math.random() * S.gratitude.length)]; $("#gOut").innerHTML = `<div class="memory">“${esc(g.text)}”<small>from ${fmtDate(new Date(g.t), { day: "numeric", month: "long", year: "numeric" })}</small></div>`; chime(740, 1.2); });
+  $("#gPick").addEventListener("click", () => { const g = S.gratitude[Math.floor(Math.random() * S.gratitude.length)]; $("#gOut").innerHTML = `<div class="chit">“${esc(g.text)}”<small>from ${fmt(new Date(g.t), { day: "numeric", month: "long", year: "numeric" })}</small></div>`; bell(659, 1.4); });
   $$("[data-ld]").forEach((b) => b.addEventListener("click", () => { letterDays = +b.dataset.ld; $$("[data-ld]").forEach((x) => x.setAttribute("aria-pressed", x === b)); }));
-  $("#lSeal").addEventListener("click", () => { const v = $("#lIn").value.trim(); if (!v) { toast("Write a few words first ✎"); return; } S.letters.push({ text: v, t: Date.now(), openOn: Date.now() + letterDays * 864e5 }); save(); petals(["#ffb38a", "#ff5d8f"]); toast(`Sealed. See you in ${letterDays} days ✉`); render(); });
-  $$("[data-open]").forEach((b) => b.addEventListener("click", () => { const l = S.letters.find((x) => String(x.t) === b.dataset.open); modal(`<p class="k">a letter from ${fmtDate(new Date(l.t), { day: "numeric", month: "long", year: "numeric" })}</p><p class="quote mt" style="white-space:pre-wrap">${esc(l.text)}</p><button class="btn wide mt" id="mClose">Close</button>`, (m) => $("#mClose", m).addEventListener("click", closeModal)); }));
+  $("#lSeal").addEventListener("click", () => { const v = $("#lIn").value.trim(); if (!v) { toast("Kuch toh likho ✎"); return; } S.letters.push({ text: v, t: Date.now(), openOn: Date.now() + letterDays * 864e5 }); save(); petals(["#c2334d", "#3f84b8", "#f4a623"]); toast(`Posted! It will arrive in ${letterDays} days ✉`); render(); });
+  $$("[data-open]").forEach((b) => b.addEventListener("click", () => { const l = S.letters.find((x) => String(x.t) === b.dataset.open); modal(`<p class="k">a chitthi from ${fmt(new Date(l.t), { day: "numeric", month: "long", year: "numeric" })}</p><p class="quote mt" style="white-space:pre-wrap;font-size:1.08rem">${esc(l.text)}</p><button class="btn wide indigo mt" id="mClose">Close</button>`, (m) => ($("#mClose", m).onclick = closeModal)); }));
 }
 
-/* ---------- me ---------- */
+/* ---------- main (me) ---------- */
 function viewMe() {
-  const skyNames = { auto: "Follows the time", dawn: "Dawn", day: "Day", dusk: "Dusk", night: "Night" };
-  return `<h1>${esc(S.name)}'s corner</h1><p class="sub">Since ${fmtDate(new Date(S.created), { month: "long", year: "numeric" })} · ${Object.keys(S.checkins).length} check-ins</p>
-    <div class="card"><div class="list">
+  const skyName = S.sky === "auto" ? "Follows the time of day" : `${SKY_META[S.sky][0]} · ${SKY_META[S.sky][1]}`;
+  return `<h1>${esc(S.name)}'s corner</h1><p class="sub"><span class="hi">${esc(S.name)} का कोना</span> · since ${fmt(new Date(S.created), { month: "long", year: "numeric" })} · ${Object.keys(S.checkins).length} petals · ${S.gratitude.length} coins</p>
+    <div class="card border-motif"><div class="list">
       <button class="li" id="mName"><span class="ic">✏️</span><span class="tx"><b>Change name</b><span>Currently “${esc(S.name)}”</span></span><span class="end">›</span></button>
-      <button class="li" id="mSky"><span class="ic">🎨</span><span class="tx"><b>Sky</b><span>${skyNames[S.sky]}</span></span><span class="end">›</span></button>
-      <div class="li"><span class="ic">🔔</span><span class="tx"><b>Soft sounds</b><span>Chimes when you check in or breathe</span></span><button class="switch" role="switch" aria-checked="${S.sound}" id="mSound" aria-label="Soft sounds"></button></div>
-      <button class="li" id="mAmb"><span class="ic">🌧️</span><span class="tx"><b>Ambient sound</b><span>${{ off: "Off", rain: "Gentle rain", ocean: "Ocean waves" }[S.ambient]}</span></span><span class="end">›</span></button>
-      <button class="li" id="mRem"><span class="ic">⏰</span><span class="tx"><b>Daily reminder</b><span>Add a gentle 9 pm nudge to your calendar</span></span><span class="end">›</span></button>
+      <button class="li" id="mSky"><span class="ic">🌅</span><span class="tx"><b>Time of day</b><span>${skyName}</span></span><span class="end">›</span></button>
+      <div class="li"><span class="ic">🔔</span><span class="tx"><b>Temple bell</b><span>A soft bell when you check in or breathe</span></span><button class="switch" role="switch" aria-checked="${S.sound}" id="mSound" aria-label="Temple bell sound"></button></div>
+      <button class="li" id="mAmb"><span class="ic">🎶</span><span class="tx"><b>Background sound</b><span>${{ off: "Off", rain: "Monsoon rain", tanpura: "Tanpura drone" }[S.ambient]}</span></span><span class="end">›</span></button>
+      <button class="li" id="mRem"><span class="ic">⏰</span><span class="tx"><b>Daily reminder</b><span>A gentle 9 pm nudge in your calendar</span></span><span class="end">›</span></button>
       <button class="li" id="mShare"><span class="ic">💌</span><span class="tx"><b>Share Sukoon</b><span>Someone you love might need a calm corner</span></span><span class="end">›</span></button>
       <button class="li" id="mExport"><span class="ic">📥</span><span class="tx"><b>Download my data</b><span>A copy of everything, as a file</span></span><span class="end">›</span></button>
-      <button class="li" id="mReset"><span class="ic">🌱</span><span class="tx"><b>Start fresh</b><span>Erase everything on this device</span></span><span class="end">›</span></button>
+      <button class="li" id="mReset"><span class="ic">🌱</span><span class="tx"><b>Start fresh</b><span>Erase everything on this phone</span></span><span class="end">›</span></button>
     </div></div>
-    <div class="card"><p class="k">privacy</p><p class="small mt">Sukoon has no servers, no accounts and no trackers. Your name, moods, notes and letters live only in this browser on this device.</p></div>
-    <div class="card support"><p class="k">having a really hard day?</p><p class="mt" style="font-weight:700">You don't have to carry it alone.</p>
-      <p class="small mt">In India, call <a href="tel:14416">Tele-MANAS 14416</a> (free, 24×7). Elsewhere, find a helpline at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. If you're in danger, call your local emergency number.</p></div>
-    <div class="card"><p class="k">about</p><p class="quote mt" style="font-size:1.02rem">Sukoon (सुकून) means peace of mind. I made it for the days that need a softer pace, and for the people I care about.</p><p class="small mt">— Madhuri Patil · <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">portfolio</a> · <a href="https://www.linkedin.com/in/madhuri-patil084" target="_blank" rel="noopener">LinkedIn</a></p></div>`;
+    <div class="card"><p class="k">privacy</p><p class="small mt">Sukoon has no servers, no accounts and no trackers. Your name, moods, notes, coins and letters live only in this browser, on this phone.</p></div>
+    <div class="card support"><p class="k">having a really hard day?</p><p class="mt" style="font-weight:800;font-size:1.05rem">You don't have to carry it alone. <span class="hi">आप अकेले नहीं हैं।</span></p>
+      <p class="small mt">In India, call <a href="tel:14416">Tele-MANAS 14416</a> (free, 24×7). Elsewhere, find a helpline at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. If you are in danger, call 112.</p></div>
+    <div class="card"><p class="k">about sukoon</p><p class="quote mt" style="font-size:1.06rem">Sukoon (सुकून) means peace of mind. I built it for the days that need a softer pace, and for the people I care about, with the colours and little rituals I grew up with.</p>
+      <p class="small mt">— Madhuri Patil · <a href="https://madhurids012-jpg.github.io/" target="_blank" rel="noopener">portfolio</a> · <a href="https://www.linkedin.com/in/madhuri-patil084" target="_blank" rel="noopener">LinkedIn</a></p></div>`;
 }
 function bindMe() {
-  $("#mName").addEventListener("click", () => modal(`<h2>Change name</h2><input id="nIn" type="text" maxlength="24" class="mt" value="${esc(S.name)}"><div class="row mt"><button class="btn soft" id="nC">Cancel</button><button class="btn" id="nS">Save</button></div>`, (m) => { $("#nC", m).onclick = closeModal; $("#nS", m).onclick = () => { const v = $("#nIn", m).value.trim(); if (v) { S.name = v; save(); } closeModal(); render(); toast("Name updated"); }; }));
-  $("#mSky").addEventListener("click", () => modal(`<h2>Choose your sky</h2><div class="list mt">${[["auto", "Follows the time", "Dawn, day, dusk and night as the hours pass"], ["dawn", "Dawn", "Peach and lilac"], ["day", "Day", "Clear blue"], ["dusk", "Dusk", "Golden pink"], ["night", "Night", "Deep indigo with stars"]].map(([k, l, s]) => `<button class="li" data-skyopt="${k}"><span class="tx"><b>${l}</b><span>${s}</span></span><span class="end">${S.sky === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-skyopt]", m).forEach((b) => (b.onclick = () => { S.sky = b.dataset.skyopt; save(); closeModal(); render(); }))));
-  $("#mSound").addEventListener("click", (e) => { S.sound = !S.sound; save(); e.currentTarget.setAttribute("aria-checked", S.sound); if (S.sound) chime(660, 1); });
-  $("#mAmb").addEventListener("click", () => modal(`<h2>Ambient sound</h2><p class="small mt">Plays softly while Sukoon is open. Made right here in your browser, no downloads.</p><div class="list mt">${[["off", "Off"], ["rain", "Gentle rain"], ["ocean", "Ocean waves"]].map(([k, l]) => `<button class="li" data-amb="${k}"><span class="tx"><b>${l}</b></span><span class="end">${S.ambient === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-amb]", m).forEach((b) => (b.onclick = () => { setAmbient(b.dataset.amb); closeModal(); render(); }))));
-  $("#mRem").addEventListener("click", () => {
-    const d = new Date(); d.setHours(21, 0, 0, 0); const p = (n) => String(n).padStart(2, "0"); const st = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T210000`;
-    const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Sukoon//EN", "BEGIN:VEVENT", `UID:sukoon-${Date.now()}@sukoon`, `DTSTAMP:${st}`, `DTSTART:${st}`, "DURATION:PT5M", "RRULE:FREQ=DAILY", "SUMMARY:Sukoon · how's your inner weather?", "DESCRIPTION:A two-minute check-in: https://sukoon-madhuri.vercel.app/", "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Time for Sukoon", "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+  $("#mName").onclick = () => modal(`<h2>Change name</h2><input id="nIn" type="text" maxlength="24" class="mt" value="${esc(S.name)}"><div class="row mt"><button class="btn soft" id="nC">Cancel</button><button class="btn" id="nS">Save</button></div>`, (m) => { $("#nC", m).onclick = closeModal; $("#nS", m).onclick = () => { const v = $("#nIn", m).value.trim(); if (v) { S.name = v; save(); } closeModal(); render(); toast("Name updated"); }; });
+  $("#mSky").onclick = () => modal(`<h2>Time of day</h2><div class="list mt">${[["auto", "Follows the time", "Subah, din, shaam and raat as the hours pass"], ["subah", "Subah · सुबह", "Soft dawn peach"], ["din", "Din · दिन", "Warm daylight paper"], ["shaam", "Shaam · शाम", "Terracotta sunset"], ["raat", "Raat · रात", "Indigo night with diya lights"]].map(([k, l, s]) => `<button class="li" data-skyopt="${k}"><span class="tx"><b>${l}</b><span>${s}</span></span><span class="end">${S.sky === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-skyopt]", m).forEach((b) => (b.onclick = () => { S.sky = b.dataset.skyopt; save(); closeModal(); render(); })));
+  $("#mSound").onclick = (e) => { S.sound = !S.sound; save(); e.currentTarget.setAttribute("aria-checked", S.sound); if (S.sound) bell(523, 2); };
+  $("#mAmb").onclick = () => modal(`<h2>Background sound</h2><p class="small mt">Plays softly while Sukoon is open. Generated right here in your browser.</p><div class="list mt">${[["off", "Off"], ["rain", "Monsoon rain · बारिश"], ["tanpura", "Tanpura drone · तानपुरा"]].map(([k, l]) => `<button class="li" data-amb="${k}"><span class="tx"><b>${l}</b></span><span class="end">${S.ambient === k ? "✓" : ""}</span></button>`).join("")}</div>`, (m) => $$("[data-amb]", m).forEach((b) => (b.onclick = () => { setAmbient(b.dataset.amb); closeModal(); render(); })));
+  $("#mRem").onclick = () => {
+    const d = new Date(), p = (n) => String(n).padStart(2, "0"), st = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T210000`;
+    const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Sukoon//EN", "BEGIN:VEVENT", `UID:sukoon-${Date.now()}@sukoon`, `DTSTAMP:${st}`, `DTSTART:${st}`, "DURATION:PT5M", "RRULE:FREQ=DAILY", "SUMMARY:Sukoon · how is your mann ka mausam?", `DESCRIPTION:Two quiet minutes: ${SITE}`, "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Time for Sukoon", "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
     dl(new Blob([ics], { type: "text/calendar" }), "sukoon-reminder.ics"); toast("Open the file to add it to your calendar ⏰");
-  });
-  $("#mShare").addEventListener("click", async () => { const data = { title: "Sukoon", text: "A calm little corner for your day 🌿", url: "https://sukoon-madhuri.vercel.app/" }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(data.url); toast("Link copied ✓"); } } catch {} });
-  $("#mExport").addEventListener("click", () => { dl(new Blob([JSON.stringify(S, null, 2)], { type: "application/json" }), `sukoon-${dkey()}.json`); toast("Your data is downloading"); });
-  $("#mReset").addEventListener("click", () => modal(`<h2>Start fresh?</h2><p class="small mt">This erases your name, check-ins, jar and letters from this device. It can't be undone.</p><div class="row mt"><button class="btn soft" id="rC">Keep everything</button><button class="btn" id="rY" style="background:#e5486f;color:#fff">Erase</button></div>`, (m) => { $("#rC", m).onclick = closeModal; $("#rY", m).onclick = () => { setAmbient("off"); S = blank(); save(); closeModal(); current = "today"; render(); }; }));
+  };
+  $("#mShare").onclick = async () => { const data = { title: "Sukoon · सुकून", text: "A calm daily ritual with an Indian soul 🪔", url: SITE }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(SITE); toast("Link copied ✓"); } } catch {} };
+  $("#mExport").onclick = () => { dl(new Blob([JSON.stringify(S, null, 2)], { type: "application/json" }), `sukoon-${dkey()}.json`); toast("Your data is downloading"); };
+  $("#mReset").onclick = () => modal(`<h2>Start fresh?</h2><p class="small mt">This erases your name, rangoli, gullak and letters from this phone. It can't be undone.</p><div class="row mt"><button class="btn soft" id="rC">Keep everything</button><button class="btn" id="rY" style="background:#c2334d;box-shadow:0 4px 0 #8b1f33">Erase</button></div>`, (m) => { $("#rC", m).onclick = closeModal; $("#rY", m).onclick = () => { setAmbient("off"); S = blank(); save(); try { localStorage.removeItem(OLD); } catch {} closeModal(); current = "today"; render(); }; });
 }
-function dl(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 
 /* ---------- boot ---------- */
-const h = location.hash.slice(1); if (TABS.some(([id]) => id === h)) current = h;
+const h0 = location.hash.slice(1); if (TABS.some(([id]) => id === h0)) current = h0;
 window.addEventListener("hashchange", () => { const t = location.hash.slice(1); if (t !== current && TABS.some(([id]) => id === t)) { current = t; stopBreath(); render(); } });
-render();
-setInterval(applySky, 5 * 60 * 1000);
+save(); render(); setInterval(applySky, 5 * 60 * 1000);
 if (S.ambient !== "off") { const resume = () => { setAmbient(S.ambient); document.removeEventListener("pointerdown", resume); }; document.addEventListener("pointerdown", resume); }
 if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
